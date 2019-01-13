@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Good Wobbles</title>
+    <link>https://example.com/categories/projects/</link>
+    <description>Recent content in Projects on Good Wobbles</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://example.com/categories/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>An Analysis of the Competitive Lifetime of Powerlifters</title>
+      <link>https://example.com/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</guid>
+      <description>Brief overview
+A survival analysis is conducted on the OpenPowerlifting.org dataset. Individual powerlifters and the length of time that they&amp;rsquo;ve been active (in terms of time from first to last meet and number of meets attended) are treated as survival objects. Survival curves are fitted and covariates are examined for effects.
+This project was completed in part as a semester project for a Reliability Data Analysis course at the University of South Florida.</description>
+    </item>
+    
+    <item>
+      <title>Generating Random Graphs</title>
+      <link>https://example.com/1/01/generating-random-graphs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/1/01/generating-random-graphs/</guid>
+      <description>Note: This post is still undergoing &amp;lsquo;renovation&amp;rsquo; - images need to be cleaned up and mathematical notation inserted, but the core content is readable and correct.
+Graphs are among the most basic and widely applicable mathematical structures. Modern applications in the study of social networks, spread of communicable diseases, computer networks, and many others, have made the study of graphs and their probabilistic counterpart, random graphs, especially relevant.
+As a way of learning more about networks, I investigated algorithms for generating random graphs.</description>
+    </item>
+    
+  </channel>
+</rss>
