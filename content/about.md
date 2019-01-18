@@ -9,3 +9,5 @@ Over the years, I've found that many projects that I work on eventually get "los
 My blog title comes from a topic I studied as an undergraduate in Molecular Biology: [Wobble Base Pairing](https://en.wikipedia.org/wiki/Wobble_base_pair). Something about the word "wobble" has always appealed to me.
 
 If you want to reach out to me, you can send me an email at sean.ch.carter@gmail.com 
+
+My CV can be downloaded [here](/docs/SeanCV.pdf)
