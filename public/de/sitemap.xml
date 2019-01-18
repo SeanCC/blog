@@ -3,82 +3,82 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://example.com/de/categories/</loc>
+    <loc>/de/categories/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/categories/"
+                href="/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/categories/"
+                href="/es/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/categories/"
+                href="/de/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://example.com/de/</loc>
+    <loc>/de/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/"
+                href="/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/"
+                href="/es/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/"
+                href="/de/"
                 />
   </url>
   
   <url>
-    <loc>https://example.com/de/tags/</loc>
+    <loc>/de/tags/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/tags/"
+                href="/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/tags/"
+                href="/es/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/tags/"
+                href="/de/tags/"
                 />
   </url>
   
   <url>
-    <loc>https://example.com/de/ua-47268287-3/</loc>
+    <loc>/de/ua-47268287-3/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/ua-47268287-3/"
+                href="/ua-47268287-3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/ua-47268287-3/"
+                href="/es/ua-47268287-3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/ua-47268287-3/"
+                href="/de/ua-47268287-3/"
                 />
   </url>
   

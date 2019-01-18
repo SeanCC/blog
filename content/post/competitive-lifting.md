@@ -226,7 +226,7 @@ We end up with a set of plots that looks like this:
 | Weibull     |     ![](/post/images/WeibullMeets3.png)          |     ![](/post/images/weimeetsg3.png)         |
 
 
-These look better than the parametric plots we produced at the beginning. The cutoff was picked more or less by eyeballing it - we could likely do better than this. The fits definitely aren't perfect, but they are suggestive - after some cutoff, the exponential distribution appears to be the best fit, which implies a constant hazard rate after some threshold. We next attempt to fit exponential curves along gender lines:
+These look better than the parametric plots we produced at the beginning. The cutoff was picked more or less by eyeballing it - we could likely do better than this. The fits definitely aren't perfect, but they are suggestive - after some cutoff, the exponential distribution appears to be the best fit, which implies a constant hazard rate after some threshold.
 
 
 
@@ -234,14 +234,23 @@ These look better than the parametric plots we produced at the beginning. The cu
 **Intermittent Conclusions and Next Steps**
 
 We haven't arrived at a final model yet. We have, however, arrived at a few important conclusions:
+
 1. The most obvious covariates available to us are not as strongly predictive as we might think. Starting weight, starting age, and starting stats don't appear to be extremely predictive of long term hazard, although gender does appear to play a big role. 
+
 2. A model for competitive lifetime seems likely to include a threshold of sorts - at some time point or number of meets, the hazard rate stops being determined by one distribution and begins being determined by another.
+
 3. We have some evidence that the exponential distribution is more explanatory after some threshold cutoff, implying a constant hazard rate after that point. This falls in line with intuition - we'd expect a lot of people to try out the sport and quit not long after, leading to a lot of drop-off early on that levels off later. 
 
+
 Going forward, more work is going to be carried out in:
+
 1. Engineering more covariates, whether by collecting data from additional sources or examining the present dataset for more features. We spent relatively little time on feature engineering at the beginning. It is likely to be worthwhile to go back to that soon.
-2. Getting a better idea of where a threshold might lie for switching between parametric model, if we decide to stick with a parametric model.
-3. Examining other semi- and non-parametric models that will allow us to explicitly include covariates in our model. 
+
+2. Fitting parametric models that account for covariates.
+
+3. Getting a better idea of where a threshold might lie for switching between parametric models, if we decide to stick with a parametric model.
+
+4. Examining other semi- and non-parametric models that will allow us to explicitly include covariates in our model. 
 
 
 

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Survival Analysis on Good Wobbles</title>
-    <link>https://example.com/tags/survival-analysis/</link>
+    <link>/tags/survival-analysis/</link>
     <description>Recent content in Survival Analysis on Good Wobbles</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://example.com/tags/survival-analysis/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/survival-analysis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>An Analysis of the Competitive Lifetime of Powerlifters</title>
-      <link>https://example.com/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</link>
+      <link>/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</guid>
+      <guid>/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</guid>
       <description>Brief overview
 A survival analysis is conducted on the OpenPowerlifting.org dataset. Individual powerlifters and the length of time that they&amp;rsquo;ve been active (in terms of time from first to last meet and number of meets attended) are treated as survival objects. Survival curves are fitted and covariates are examined for effects.
 This project was completed in part as a semester project for a Reliability Data Analysis course at the University of South Florida.</description>

@@ -10,7 +10,7 @@
 A survival analysis is conducted on the OpenPowerlifting.org dataset. Individual powerlifters and the length of time that they&rsquo;ve been active (in terms of time from first to last meet and number of meets attended) are treated as survival objects. Survival curves are fitted and covariates are examined for effects.
 This project was completed in part as a semester project for a Reliability Data Analysis course at the University of South Florida." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://example.com/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/" />
+<meta property="og:url" content="/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="An Analysis of the Competitive Lifetime of Powerlifters"/>
@@ -20,7 +20,7 @@ This project was completed in part as a semester project for a Reliability Data 
 
 
 
-    <link rel="canonical" href="https://example.com/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/">
+    <link rel="canonical" href="/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/">
 
     <title>
       
@@ -30,7 +30,7 @@ This project was completed in part as a semester project for a Reliability Data 
 
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://example.com/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     
 
@@ -82,11 +82,11 @@ Good Wobbles
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         
-                            <a class="dropdown-item" href="https://example.com/">English</a>
+                            <a class="dropdown-item" href="/">English</a>
                         
-                            <a class="dropdown-item" href="https://example.com/es/">Español</a>
+                            <a class="dropdown-item" href="/es/">Español</a>
                         
-                            <a class="dropdown-item" href="https://example.com/de/">Deutsch</a>
+                            <a class="dropdown-item" href="/de/">Deutsch</a>
                         
                     </div>
                 </li>
@@ -498,19 +498,31 @@ meet_fit_parametrics <span style="color:#f92672">&lt;-</span> <span style="color
 </tbody>
 </table>
 
-<p>These look better than the parametric plots we produced at the beginning. The cutoff was picked more or less by eyeballing it - we could likely do better than this. The fits definitely aren&rsquo;t perfect, but they are suggestive - after some cutoff, the exponential distribution appears to be the best fit, which implies a constant hazard rate after some threshold. We next attempt to fit exponential curves along gender lines:</p>
+<p>These look better than the parametric plots we produced at the beginning. The cutoff was picked more or less by eyeballing it - we could likely do better than this. The fits definitely aren&rsquo;t perfect, but they are suggestive - after some cutoff, the exponential distribution appears to be the best fit, which implies a constant hazard rate after some threshold.</p>
 
 <p><strong>Intermittent Conclusions and Next Steps</strong></p>
 
-<p>We haven&rsquo;t arrived at a final model yet. We have, however, arrived at a few important conclusions:
-1. The most obvious covariates available to us are not as strongly predictive as we might think. Starting weight, starting age, and starting stats don&rsquo;t appear to be extremely predictive of long term hazard, although gender does appear to play a big role.
-2. A model for competitive lifetime seems likely to include a threshold of sorts - at some time point or number of meets, the hazard rate stops being determined by one distribution and begins being determined by another.
-3. We have some evidence that the exponential distribution is more explanatory after some threshold cutoff, implying a constant hazard rate after that point. This falls in line with intuition - we&rsquo;d expect a lot of people to try out the sport and quit not long after, leading to a lot of drop-off early on that levels off later.</p>
+<p>We haven&rsquo;t arrived at a final model yet. We have, however, arrived at a few important conclusions:</p>
 
-<p>Going forward, more work is going to be carried out in:
-1. Engineering more covariates, whether by collecting data from additional sources or examining the present dataset for more features. We spent relatively little time on feature engineering at the beginning. It is likely to be worthwhile to go back to that soon.
-2. Getting a better idea of where a threshold might lie for switching between parametric model, if we decide to stick with a parametric model.
-3. Examining other semi- and non-parametric models that will allow us to explicitly include covariates in our model.</p>
+<ol>
+<li><p>The most obvious covariates available to us are not as strongly predictive as we might think. Starting weight, starting age, and starting stats don&rsquo;t appear to be extremely predictive of long term hazard, although gender does appear to play a big role.</p></li>
+
+<li><p>A model for competitive lifetime seems likely to include a threshold of sorts - at some time point or number of meets, the hazard rate stops being determined by one distribution and begins being determined by another.</p></li>
+
+<li><p>We have some evidence that the exponential distribution is more explanatory after some threshold cutoff, implying a constant hazard rate after that point. This falls in line with intuition - we&rsquo;d expect a lot of people to try out the sport and quit not long after, leading to a lot of drop-off early on that levels off later.</p></li>
+</ol>
+
+<p>Going forward, more work is going to be carried out in:</p>
+
+<ol>
+<li><p>Engineering more covariates, whether by collecting data from additional sources or examining the present dataset for more features. We spent relatively little time on feature engineering at the beginning. It is likely to be worthwhile to go back to that soon.</p></li>
+
+<li><p>Fitting parametric models that account for covariates.</p></li>
+
+<li><p>Getting a better idea of where a threshold might lie for switching between parametric models, if we decide to stick with a parametric model.</p></li>
+
+<li><p>Examining other semi- and non-parametric models that will allow us to explicitly include covariates in our model.</p></li>
+</ol>
 
 
     
@@ -519,6 +531,8 @@ meet_fit_parametrics <span style="color:#f92672">&lt;-</span> <span style="color
 
     <h4>See also</h4>
     <ul>
+        
+            <li><a href="/1/01/a-quick-dd-experiment/">A Quick D&amp;D Experiment</a></li>
         
             <li><a href="/1/01/generating-random-graphs/">Generating Random Graphs</a></li>
         
@@ -539,6 +553,10 @@ meet_fit_parametrics <span style="color:#f92672">&lt;-</span> <span style="color
 <section>
     <h4>Recent Posts</h4>
     <ol class="list-unstyled">
+        
+        <li>
+            <a href="/1/01/a-quick-dd-experiment/">A Quick D&amp;D Experiment</a>
+        </li>
         
         <li>
             <a href="/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/">An Analysis of the Competitive Lifetime of Powerlifters</a>
@@ -576,9 +594,15 @@ meet_fit_parametrics <span style="color:#f92672">&lt;-</span> <span style="color
             
             <a class="badge badge-primary" href="/tags/algorithms">algorithms</a>
             
+            <a class="badge badge-primary" href="/tags/dd">dd</a>
+            
             <a class="badge badge-primary" href="/tags/projects">projects</a>
             
+            <a class="badge badge-primary" href="/tags/quickie">quickie</a>
+            
             <a class="badge badge-primary" href="/tags/random-graphs">random-graphs</a>
+            
+            <a class="badge badge-primary" href="/tags/simulation">simulation</a>
             
             <a class="badge badge-primary" href="/tags/sports">sports</a>
             

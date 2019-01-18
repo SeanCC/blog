@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simulation on Good Wobbles</title>
+    <link>/tags/simulation/</link>
+    <description>Recent content in Simulation on Good Wobbles</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Quick D&amp;D Experiment</title>
+      <link>/1/01/a-quick-dd-experiment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1/01/a-quick-dd-experiment/</guid>
+      <description>Just a quick experiment I was curious about! A few friends and I are starting up a new D&amp;amp;D campaign, and a player asked me how I prefer stats for characters to be determined. I&amp;rsquo;ve always preferred point buying, but I enjoy the randomness of rolling stats. I ran some simulations to get an idea of what kind of stat distributions different rolling methods give!
+First, we define our functions for generating stats.</description>
+    </item>
+    
+  </channel>
+</rss>

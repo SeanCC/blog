@@ -3,134 +3,153 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://example.com/tags/algorithms/</loc>
+    <loc>/1/01/a-quick-dd-experiment/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/algorithms/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</loc>
+    <loc>/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</loc>
   </url>
   
   <url>
-    <loc>https://example.com/categories/</loc>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://example.com/es/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="https://example.com/de/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://example.com/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://example.com/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>https://example.com/1/01/generating-random-graphs/</loc>
-  </url>
-  
-  <url>
-    <loc>https://example.com/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/"
+                href="/es/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/"
+                href="/de/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/"
+                href="/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://example.com/post/</loc>
+    <loc>/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/dd/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/projects/</loc>
-    <priority>0</priority>
+    <loc>/1/01/generating-random-graphs/</loc>
   </url>
   
   <url>
-    <loc>https://example.com/categories/projects/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/random-graphs/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/sports/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/survival-analysis/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/</loc>
+    <loc>/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/tags/"
+                href="/es/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/tags/"
+                href="/de/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/tags/"
+                href="/"
                 />
   </url>
   
   <url>
-    <loc>https://example.com/ua-47268287-3/</loc>
+    <loc>/post/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/projects/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/projects/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/quickie/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/random-graphs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/simulation/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/sports/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/survival-analysis/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/ua-47268287-3/"
+                href="/es/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/ua-47268287-3/"
+                href="/de/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/ua-47268287-3/"
+                href="/tags/"
                 />
   </url>
   
   <url>
-    <loc>https://example.com/about/</loc>
+    <loc>/ua-47268287-3/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/ua-47268287-3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="/de/ua-47268287-3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/ua-47268287-3/"
+                />
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
   </url>
   
 </urlset>
