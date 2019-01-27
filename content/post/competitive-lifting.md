@@ -123,7 +123,7 @@ Now that we have a number of covariates to explore, we attempt to fit a semi-par
 
 The Cox-PH model fits a hazard function to survival data using multiple linear regression. The model essentially multiplies a baseline hazard (the hazard when all variables are equal to 0) by an exponential function containing a linear combination of covariates. 
 
-`$ h(t) = h\_{0}(t) \times exp(b\_{1}x_{1} + ... + b\_{k}x\_{k}) $`
+`$ h(t) = h_{0}(t) \times exp(b_{1}x_{1} + ... + b_{k}x_{k}) $`
 
 Because of the model's form, the covariates must meet a set of constraints, namely:
 1. Hazard functions for different levels of each covariate must be proportional over time - they should not overlap

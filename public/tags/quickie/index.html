@@ -159,6 +159,60 @@ First, we define our functions for generating stats.
 
 
 
+    
+        <article class="blog-post">
+    <header>
+        <h2 class="blog-post-title">
+            <a class="text-dark" href="/1/01/random-walkers-and-web-crawlers/">Random Walkers and Web Crawlers</a>
+        </h2>
+        
+
+
+<div class="blog-post-date text-secondary">
+    
+    
+        by <span rel="author">Sean Carter</span>
+    
+</div>
+
+        
+<div class="blog-post-tags text-secondary">
+    <strong>Tags:</strong>
+    
+        <a class="badge badge-primary" href="/tags/projects">projects</a>
+    
+        <a class="badge badge-primary" href="/tags/quickie">quickie</a>
+    
+        <a class="badge badge-primary" href="/tags/web-crawling">web crawling</a>
+    
+        <a class="badge badge-primary" href="/tags/random-walks">random walks</a>
+    
+        <a class="badge badge-primary" href="/tags/random-graphs">random graphs</a>
+    
+</div>
+
+        
+<div class="blog-post-categories text-secondary">
+    <strong>Categories:</strong>
+    
+        <a class="badge badge-primary" href="/categories/projects">Projects</a>
+    
+</div>
+
+    </header>
+    Brief Overview: This was put together for a class assignment in Probability Theory 2. We were to discuss random walks and how they relate to the PageRank algorithm.
+An overview of the relevant mathematics is given, and a small web crawler is implemented to collect links between wikipedia articles. The links are saved in a SQLite database and used later to construct a graph and rank articles based on centrality.
+    
+    <p></p>
+    <a href="/1/01/random-walkers-and-web-crawlers/">Read More →</a>
+    
+</article>
+
+
+    
+
+
+
 
 
 
@@ -189,6 +243,10 @@ First, we define our functions for generating stats.
         
         <li>
             <a href="/post/">Posts</a>
+        </li>
+        
+        <li>
+            <a href="/1/01/random-walkers-and-web-crawlers/">Random Walkers and Web Crawlers</a>
         </li>
         
     </ol>
@@ -223,11 +281,15 @@ First, we define our functions for generating stats.
             
             <a class="badge badge-primary" href="/tags/random-graphs">random-graphs</a>
             
+            <a class="badge badge-primary" href="/tags/random-walks">random-walks</a>
+            
             <a class="badge badge-primary" href="/tags/simulation">simulation</a>
             
             <a class="badge badge-primary" href="/tags/sports">sports</a>
             
             <a class="badge badge-primary" href="/tags/survival-analysis">survival-analysis</a>
+            
+            <a class="badge badge-primary" href="/tags/web-crawling">web-crawling</a>
             
         </p>
         
@@ -241,8 +303,34 @@ First, we define our functions for generating stats.
     
 
     
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+      <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+  </script>
     
 
     

@@ -288,7 +288,7 @@ Good Wobbles
 
 <p>The Cox-PH model fits a hazard function to survival data using multiple linear regression. The model essentially multiplies a baseline hazard (the hazard when all variables are equal to 0) by an exponential function containing a linear combination of covariates.</p>
 
-<p><code>$ h(t) = h\_{0}(t) \times exp(b\_{1}x_{1} + ... + b\_{k}x\_{k}) $</code></p>
+<p><code>$ h(t) = h_{0}(t) \times exp(b_{1}x_{1} + ... + b_{k}x_{k}) $</code></p>
 
 <p>Because of the model&rsquo;s form, the covariates must meet a set of constraints, namely:
 1. Hazard functions for different levels of each covariate must be proportional over time - they should not overlap
@@ -536,6 +536,8 @@ meet_fit_parametrics <span style="color:#f92672">&lt;-</span> <span style="color
         
             <li><a href="/1/01/generating-random-graphs/">Generating Random Graphs</a></li>
         
+            <li><a href="/1/01/random-walkers-and-web-crawlers/">Random Walkers and Web Crawlers</a></li>
+        
     </ul>
 
 
@@ -570,6 +572,10 @@ meet_fit_parametrics <span style="color:#f92672">&lt;-</span> <span style="color
             <a href="/post/">Posts</a>
         </li>
         
+        <li>
+            <a href="/1/01/random-walkers-and-web-crawlers/">Random Walkers and Web Crawlers</a>
+        </li>
+        
     </ol>
 </section>
 
@@ -602,11 +608,15 @@ meet_fit_parametrics <span style="color:#f92672">&lt;-</span> <span style="color
             
             <a class="badge badge-primary" href="/tags/random-graphs">random-graphs</a>
             
+            <a class="badge badge-primary" href="/tags/random-walks">random-walks</a>
+            
             <a class="badge badge-primary" href="/tags/simulation">simulation</a>
             
             <a class="badge badge-primary" href="/tags/sports">sports</a>
             
             <a class="badge badge-primary" href="/tags/survival-analysis">survival-analysis</a>
+            
+            <a class="badge badge-primary" href="/tags/web-crawling">web-crawling</a>
             
         </p>
         
@@ -620,8 +630,34 @@ meet_fit_parametrics <span style="color:#f92672">&lt;-</span> <span style="color
     
 
     
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+      <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+  </script>
     
 
     
