@@ -106,7 +106,7 @@ Obviously, the size 100 sample is the most expensive. The other three methods, h
 
 We test with the exponential distribution instead. The maximum likelihood estimator for the rate parameter of the exponential distribution is the reciprocal of the sample mean. We modify the testing function as follows:
 
-{{<highlight R "linenos=table">>}}
+{{<highlight R "linenos=table">}}
 test_resample <- function(){
 	samp_10 <- rexp(10, rate=7)
 	samp_50 <- rexp(50, rate=7)
@@ -127,7 +127,7 @@ Still relatively similar results!
 
 So let's try something harder. We'll test a linear regression on data generated using the following function:
 
-{{<highlight R "linenos=table">>}}
+{{<highlight R "linenos=table">}}
 gen_TestData <- function(){
 	param1 <- rnorm(1, mean=100, sd=20)
 	param2 <- rnorm(1, mean=-50, sd=10)

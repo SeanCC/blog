@@ -4,16 +4,15 @@
   
   <url>
     <loc>/es/categories/</loc>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/categories/"
-                />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
                 href="/de/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -24,7 +23,6 @@
   
   <url>
     <loc>/es/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -44,7 +42,6 @@
   
   <url>
     <loc>/es/tags/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -64,16 +61,15 @@
   
   <url>
     <loc>/es/ua-47268287-3/</loc>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/ua-47268287-3/"
-                />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
                 href="/de/ua-47268287-3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/ua-47268287-3/"
                 />
     <xhtml:link
                 rel="alternate"

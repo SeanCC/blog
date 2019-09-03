@@ -4,7 +4,6 @@
   
   <url>
     <loc>/de/categories/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -24,7 +23,6 @@
   
   <url>
     <loc>/de/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -44,7 +42,6 @@
   
   <url>
     <loc>/de/tags/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -64,7 +61,6 @@
   
   <url>
     <loc>/de/ua-47268287-3/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"

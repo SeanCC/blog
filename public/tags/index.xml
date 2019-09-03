@@ -6,12 +6,40 @@
     <description>Recent content in Tags on Good Wobbles</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 02 Sep 2019 17:51:49 -0400</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Algorithms</title>
+      <title>experience</title>
+      <link>/tags/experience/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>/tags/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>internship</title>
+      <link>/tags/internship/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>/tags/internship/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>post-mortem</title>
+      <link>/tags/post-mortem/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>/tags/post-mortem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>algorithms</title>
       <link>/tags/algorithms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -20,7 +48,7 @@
     </item>
     
     <item>
-      <title>Dd</title>
+      <title>D&amp;D</title>
       <link>/tags/dd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -29,7 +57,7 @@
     </item>
     
     <item>
-      <title>Projects</title>
+      <title>projects</title>
       <link>/tags/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -38,7 +66,7 @@
     </item>
     
     <item>
-      <title>Quickie</title>
+      <title>quickie</title>
       <link>/tags/quickie/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -47,7 +75,7 @@
     </item>
     
     <item>
-      <title>Random Graphs</title>
+      <title>random graphs</title>
       <link>/tags/random-graphs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -56,7 +84,7 @@
     </item>
     
     <item>
-      <title>Random Walks</title>
+      <title>random walks</title>
       <link>/tags/random-walks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -65,7 +93,7 @@
     </item>
     
     <item>
-      <title>Simulation</title>
+      <title>simulation</title>
       <link>/tags/simulation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -74,7 +102,7 @@
     </item>
     
     <item>
-      <title>Sports</title>
+      <title>sports</title>
       <link>/tags/sports/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -83,7 +111,7 @@
     </item>
     
     <item>
-      <title>Survival Analysis</title>
+      <title>survival-analysis</title>
       <link>/tags/survival-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -92,7 +120,7 @@
     </item>
     
     <item>
-      <title>Web Crawling</title>
+      <title>web crawling</title>
       <link>/tags/web-crawling/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
