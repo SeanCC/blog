@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Visualizing Relative Harm and Detention - Charlie Carter</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="Visualizing Relative Harm and Detention">
+<meta itemprop="description" content="Relative Harm and Pretrial Detention
+According to the Prison Policy Institute in 2020, more than 470,000 people at any one time are sitting in local jails without a conviction. These people, along with many in federal detention, are in what is known as pretrial detention: they are sitting in jail awaiting the outcome of a court case. Many of these people will eventually accept plea deals - not necessarily because they are guilty, but because a guilty plea is the quickest way out."><meta itemprop="datePublished" content="2021-09-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1236">
+<meta itemprop="keywords" content="projects,plotly,visualization,prison,harm," /><meta property="og:title" content="Visualizing Relative Harm and Detention" />
+<meta property="og:description" content="Relative Harm and Pretrial Detention
+According to the Prison Policy Institute in 2020, more than 470,000 people at any one time are sitting in local jails without a conviction. These people, along with many in federal detention, are in what is known as pretrial detention: they are sitting in jail awaiting the outcome of a court case. Many of these people will eventually accept plea deals - not necessarily because they are guilty, but because a guilty plea is the quickest way out." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://seancc.github.io/posts/relative-harm/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-07T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Visualizing Relative Harm and Detention"/>
+<meta name="twitter:description" content="Relative Harm and Pretrial Detention
+According to the Prison Policy Institute in 2020, more than 470,000 people at any one time are sitting in local jails without a conviction. These people, along with many in federal detention, are in what is known as pretrial detention: they are sitting in jail awaiting the outcome of a court case. Many of these people will eventually accept plea deals - not necessarily because they are guilty, but because a guilty plea is the quickest way out."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://seancc.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://seancc.github.io/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://seancc.github.io/css/dark.css" />
+
+	<script src="https://seancc.github.io/js/feather.min.js"></script>
+	
+		<script src="https://seancc.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://seancc.github.io/">
+				<img src="https://i.imgur.com/eheqmQ8.jpg" alt="Charlie Carter" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://seancc.github.io/">Charlie Carter</a></h1>
+	<div class="site-description"><p>Portfolio &amp; Blog</p><nav class="nav social">
+			<ul class="flat"><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">07</span>
+							<span class="rest">Sep 2021</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Visualizing Relative Harm and Detention</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p><strong>Relative Harm and Pretrial Detention</strong></p>
+<p>According to <a href="https://www.prisonpolicy.org/reports/pie2020.html">the Prison Policy Institute in 2020</a>, more than 470,000 people at any one time are sitting in local jails without a conviction. These people, along with many in federal detention, are in what is known as <em>pretrial detention</em>: they are sitting in jail awaiting the outcome of a court case. Many of these people will eventually accept plea deals - not necessarily because they are guilty, but because a guilty plea is the quickest way out. Still others will await their day in court, their lives paused for potentially months on end while the world outside - their jobs, their families, their communities - moves on without them.</p>
+<p>It is often difficult to conceptualize the harm done to people detained by the state. In some ways, conceptualizing the harm wrought by a crime is easier: we can imagine the frustration of having our treasured belongings stolen, or the fear and pain of a violent assault. The harm caused by many crimes is familiar, and we can draw analogies to our own experiences. Most of us have never been separated entirely from society, from our lives, trapped in a box and stored away for weeks, months, or years at a time. There is no analogy for us to draw on when imagining the harm of even a short stay in jail.</p>
+<p>Recently, I came across a very interesting paper: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3787018">Pretrial Detention and the Value of Liberty</a>. The authors, Megan Stevenson and Sandra Mayson of the University of Virginia School of Law and the Univerity of Pennsylvania Carey Law School respectively, published <a href="https://theappeal.org/virtually-no-one-is-dangerous-enough-to-justify-jail/">an article in The Appeal</a> describing the surveys they conducted in the paper. In their research, they try to quantify the harm caused by detention using a clever strategy: by tying that harm directly to the crimes that put people in jail.</p>
+<p>Stevenson and Mayson prime their survey participants by asking them to imagine the worst consequences that would arise from a given crime and, similarly, the worst consequences that would arise from being detained for a length of time. Then they ask participants to estimate how many hours, days, months, or years they&rsquo;d be willing to spend in jail to avoid having a given crime inflicted on them.</p>
+<p>The results are interesting:</p>
+<table>
+<thead>
+<tr>
+<th>Percentile</th>
+<th>Assault</th>
+<th>Robbery</th>
+<th>Burglary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10th</td>
+<td>1 day</td>
+<td>1 hour</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>25th</td>
+<td>5 days</td>
+<td>6 hours</td>
+<td>5 hours</td>
+</tr>
+<tr>
+<td>50th</td>
+<td>1 month</td>
+<td>3 days</td>
+<td>1 day</td>
+</tr>
+<tr>
+<td>75th</td>
+<td>6 months</td>
+<td>2 weeks</td>
+<td>1 week</td>
+</tr>
+<tr>
+<td>90th</td>
+<td>3.5 years</td>
+<td>1 month</td>
+<td>2 months</td>
+</tr>
+</tbody>
+</table>
+<p>Even for ostensibly the most severe of the crimes participants were queried on, most would be willing to spend surprisingly little time in jail to avoid the crime. Many are detained for an assault for much longer than 1 month - without even considering their detention post-conviction. Yet 50% of people wouldn&rsquo;t be willing to spend more than a month in jail to avoid an assault.</p>
+<p><strong>Visualizing Relative Harm</strong></p>
+<p>How much more, or less, harm does our justice system do than the people it detains? With the results from Stevenson and Mayson, we can visualize just that. Let&rsquo;s use robbery as a simple example - according to the Prison Policy Institute, 37,000 people are detained pretrial at any given time for robbery in the United States. Further, let us simplify as a start by only comparing the harm done to detainees against the harm done by their alleged crime.</p>
+<p>To calculate the harm done by detention for robbery, we need only multiply the number of people detained by the length of their detention. To calculate the harm done <em>by</em> the robbery, we multiply the number of people who committed robberies by the relative harm of a robbery.</p>
+<p>Imagine two axes, like the arms of a scale: one the harm allegedly done by the defendant in committing a crime (as represented by the &lsquo;relative harm&rsquo; axis), and the other the harm done by the state to the defendant in detaining them pretrial (as represented by the &lsquo;detention&rsquo; axis). In balancing the arms of this scale, we can imagine a third and final axis: the net harm done to those detained versus the harm done to victims of an alleged crime. What does that balance look like?</p>
+<script type = 'text/javascript' src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+<div id='harmDiv'></div>
+<style>
+	#harmdiv {
+		height:800px;
+	}
+</style>
+<script>
+	
+	var NumberOfPeople = 37000;
+	var detPeriod = Array(180).fill().map((element, index) => index + 1);
+	var relHarms = Array(100).fill().map((element, index) => (index + 1)/2);
+	var detHarms = [];
+	var crimeHarms = [];
+	for(var i =0; i< detPeriod.length; i++){
+		var dRow = [];
+		var cRow = [];
+		for(var j = 0; j< relHarms.length; j++){
+			dRow.push(detPeriod[i]*NumberOfPeople);
+			cRow.push(relHarms[j]*NumberOfPeople);
+			}
+		detHarms.push(dRow);
+		crimeHarms.push(cRow);
+	};
+	
+	var layout = {
+	  title: 'Harm of Detention vs Relative Harm of Offense',
+	  height:600,
+	  scene: {
+		xaxis:{title: 'Length of Detention'},
+		yaxis:{title: 'Relative Harm Ratio'},
+		zaxis:{title: 'Total Harm'},
+		camera: {
+          center: {
+                x: 0, y: 0, z: 0 }, 
+          eye: { 
+                x: -2.5, y: -1, z: 2.25 }, 
+           up: {
+                x: 0, y: 0, z: 1 }
+			}
+		},
+	};
+
+	detColors = [
+		['0', 'rgb(135, 135, 135)'],
+		['1.0','rgb(255, 52, 36)']
+	];
+	prevColors = [
+		['0', 'rgb(25, 61, 158)'],
+		['1.0','rgb(125, 45, 120)']
+	];
+	
+	detData = {
+		x:detPeriod,
+		y:relHarms,
+		z:detHarms,
+		colorscale:detColors,
+		type:'surface'
+	};
+	crimeData = {
+		x:detPeriod,
+		y:relHarms,
+		z:crimeHarms,
+		colorscale:prevColors,
+		type:'surface'
+	};
+	var data = [detData, crimeData];
+	
+	Plotly.newPlot('harmDiv', data, layout);
+</script>
+
+<p>This balance can be viewed in two ways, in fact. One, like above, where we split the harm done to the detained and the harm done to the victims of an alleged crime. Where these two surfaces intersect, the harm done to the defendant is equal to the harm done to their alleged victim.</p>
+<p>But another way of looking at it is as a single surface of net harm, where a negative Z-value indicates greater harm done to the detained than to the victims of crimes and a positive Z-value indicates greater harm done to the victims than to the detained.</p>
+<script type = 'text/javascript' src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+<div id='netHarmDiv'></div>
+<script>
+	
+	var NumberOfPeople = 37000;
+	var detPeriod = Array(180).fill().map((element, index) => index + 1);
+	var relHarms = Array(100).fill().map((element, index) => (index + 1)/2);
+
+	var netHarms = [];
+	for(var i =0; i< detPeriod.length; i++){
+
+		var nRow = [];
+		for(var j = 0; j< relHarms.length; j++){
+			nRow.push(relHarms[j]*NumberOfPeople - (detPeriod[i]*NumberOfPeople))
+			}
+		netHarms.push(nRow)
+	};
+	
+	var layout = {
+	  title: 'Net Harm (Detention - Relative Harm Caused)',
+	  height:600,
+	  scene: {
+		xaxis:{title: 'Length of Detention'},
+		yaxis:{title: 'Relative Harm Ratio'},
+		zaxis:{title: 'Net Harm'},
+		camera: {
+          center: {
+                x: 0, y: 0, z: 0 }, 
+          eye: { 
+                x: -2.5, y: -1, z: 2.25 }, 
+           up: {
+                x: 0, y: 0, z: 1 }
+			}
+		},
+	};
+
+	netData = {
+		x:detPeriod,
+		y:relHarms,
+		z:netHarms,
+		type:'surface'
+	};
+	var data = [netData];
+	
+	Plotly.newPlot('netHarmDiv', data, layout);
+</script>
+
+<p>In Stevenson and Mayson&rsquo;s paper, they analyze pretrial detention under a consequentialist framework. Under this framework, the benefit of detaining people pretrial is in the harm&rsquo;s prevented by that detention. Assuming that detaining a person pretrial only makes sense when the benefit of doing so outweighs the cost, we need only analyze the costs - the harm caused to detainees by detention - and the benefits - the hypothetical crimes prevented during detention.</p>
+<p>We calculate the harm to detainees the same way as before: the number of people detained multiplied by the length of their detention. Calculation of harm prevented is only modestly more complicated than our previous calculation. Here, we multiply the number of people who have committed a given crime by the 50th percentile relative harm value for that crime, then we multiply by our assumed probability of them recidivating.</p>
+<script type = 'text/javascript' src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+<div id='harmBars'></div>
+<div id='probSliders'>
+	Probability of Recidivating
+	<input type="range" min = "0" max = "100" value ="50" class = "slider" id = "probRecidSlide">
+	<div id='recidProb'>
+		0.5
+	</div>
+	Length of Detention
+	<input type="range" min = "1" max = "180" value ="60" class = "slider" id = "detLengthSlide">
+	<div id = 'detLength'>
+		60 days
+	</div>
+	
+</div>
+
+<style>
+	#probSliders {
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	#probRecidSlide {
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	#detLengthSlide {
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+</style>
+<script>
+	var detLength = 10;
+	var recidProb = 0.5;
+	
+	
+	
+	
+	
+	
+	
+	pcounts = [63000, 37000, 36000]
+	
+	perc10 = [1, 1/24, 1/24]
+	perc25 = [5, 1/4, 5/24]
+	perc50 = [30, 3, 1]
+	perc75 = [6*30, 14, 7]
+	perc90 = [3.5*365, 30, 60]
+	
+	function detHarms(detTime, personCounts){
+		return [
+			detTime*personCounts[0],
+			detTime*personCounts[1],
+			detTime*personCounts[2]
+		];
+	};
+	function prevHarms(recidProb, relHarms, personCounts){
+		return [
+			recidProb*personCounts[0]*relHarms[0],
+			recidProb*personCounts[1]*relHarms[1],
+			recidProb*personCounts[2]*relHarms[2]
+		];
+	};
+	
+	
+	detTrace = {
+		x: ['Assault', 'Robbery', 'Burglary'],
+		y: detHarms(detLength, pcounts),
+		type:'bar',
+		name:'Harm Caused'
+	}
+	
+	prevTrace = {
+		x: ['Assault', 'Robbery', 'Burglary'],
+		y: prevHarms(recidProb, perc50, pcounts),
+		type:'bar',
+		name:'Harm Prevented'
+	}
+	
+	data = [detTrace, prevTrace]
+
+	
+	var layout = {barmode:'group'}
+	Plotly.newPlot('harmBars', data, layout);
+	
+	var recidOut = document.getElementById('recidProb');
+	var probSlider = document.getElementById('probRecidSlide');
+	probSlider.oninput = function(){
+		newProb = this.value/100;
+		recidOut.innerHTML = newProb;
+		data[1]['y'] = prevHarms(newProb, perc50, pcounts);
+		Plotly.redraw('harmBars');
+	}
+	
+	var detOut = document.getElementById('detLength');
+	var detSlider = document.getElementById('detLengthSlide');
+	detSlider.oninput = function(){
+		newDet = this.value;
+		detOut.innerHTML = newDet + " days";
+		data[0]['y'] = detHarms(newDet, pcounts);
+		Plotly.redraw('harmBars');
+	}
+	
+</script>
+
+<p>Experiment with the lengths of detention and probability of recidivating. What does it take to achieve parity? How short of a detention, or how high of a likelihood of recidivation, is necessary to make the harm prevented equal the harm done?</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/projects">projects</a></li>
+							
+							<li><a href="/tags/plotly">plotly</a></li>
+							
+							<li><a href="/tags/visualization">visualization</a></li>
+							
+							<li><a href="/tags/prison">prison</a></li>
+							
+							<li><a href="/tags/harm">harm</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+</body>
+</html>

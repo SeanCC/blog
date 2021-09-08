@@ -1,130 +1,171 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Good Wobbles</title>
-    <link>/tags/</link>
-    <description>Recent content in Tags on Good Wobbles</description>
+    <title>Tags on Charlie Carter</title>
+    <link>https://seancc.github.io/tags/</link>
+    <description>Recent content in Tags on Charlie Carter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Sep 2019 17:51:49 -0400</lastBuildDate>
-    
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 07 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://seancc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>experience</title>
-      <link>/tags/experience/</link>
-      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      <title>harm</title>
+      <link>https://seancc.github.io/tags/harm/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>/tags/experience/</guid>
+      <guid>https://seancc.github.io/tags/harm/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>internship</title>
-      <link>/tags/internship/</link>
-      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      <title>plotly</title>
+      <link>https://seancc.github.io/tags/plotly/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>/tags/internship/</guid>
+      <guid>https://seancc.github.io/tags/plotly/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>post-mortem</title>
-      <link>/tags/post-mortem/</link>
-      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      <title>prison</title>
+      <link>https://seancc.github.io/tags/prison/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>/tags/post-mortem/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>algorithms</title>
-      <link>/tags/algorithms/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/algorithms/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>D&amp;D</title>
-      <link>/tags/dd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/dd/</guid>
+      <guid>https://seancc.github.io/tags/prison/</guid>
       <description></description>
     </item>
     
     <item>
       <title>projects</title>
-      <link>/tags/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/tags/projects/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>/tags/projects/</guid>
+      <guid>https://seancc.github.io/tags/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>visualization</title>
+      <link>https://seancc.github.io/tags/visualization/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://seancc.github.io/tags/visualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crime data</title>
+      <link>https://seancc.github.io/tags/crime-data/</link>
+      <pubDate>Sun, 08 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>https://seancc.github.io/tags/crime-data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open data</title>
+      <link>https://seancc.github.io/tags/open-data/</link>
+      <pubDate>Sun, 08 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>https://seancc.github.io/tags/open-data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>D&amp;D</title>
+      <link>https://seancc.github.io/tags/dd/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>https://seancc.github.io/tags/dd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>experience</title>
+      <link>https://seancc.github.io/tags/experience/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>https://seancc.github.io/tags/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>internship</title>
+      <link>https://seancc.github.io/tags/internship/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>https://seancc.github.io/tags/internship/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>post-mortem</title>
+      <link>https://seancc.github.io/tags/post-mortem/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>https://seancc.github.io/tags/post-mortem/</guid>
       <description></description>
     </item>
     
     <item>
       <title>quickie</title>
-      <link>/tags/quickie/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/tags/quickie/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/tags/quickie/</guid>
+      <guid>https://seancc.github.io/tags/quickie/</guid>
       <description></description>
     </item>
     
     <item>
       <title>random graphs</title>
-      <link>/tags/random-graphs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/tags/random-graphs/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/tags/random-graphs/</guid>
+      <guid>https://seancc.github.io/tags/random-graphs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>random walks</title>
-      <link>/tags/random-walks/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/tags/random-walks/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/tags/random-walks/</guid>
+      <guid>https://seancc.github.io/tags/random-walks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>simulation</title>
-      <link>/tags/simulation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/tags/simulation/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/tags/simulation/</guid>
+      <guid>https://seancc.github.io/tags/simulation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sports</title>
-      <link>/tags/sports/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/tags/sports/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/tags/sports/</guid>
+      <guid>https://seancc.github.io/tags/sports/</guid>
       <description></description>
     </item>
     
     <item>
       <title>survival-analysis</title>
-      <link>/tags/survival-analysis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/tags/survival-analysis/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/tags/survival-analysis/</guid>
+      <guid>https://seancc.github.io/tags/survival-analysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>web crawling</title>
-      <link>/tags/web-crawling/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/tags/web-crawling/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/tags/web-crawling/</guid>
+      <guid>https://seancc.github.io/tags/web-crawling/</guid>
       <description></description>
     </item>
     

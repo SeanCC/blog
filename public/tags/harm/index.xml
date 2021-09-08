@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>harm on Charlie Carter</title>
+    <link>https://seancc.github.io/tags/harm/</link>
+    <description>Recent content in harm on Charlie Carter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://seancc.github.io/tags/harm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visualizing Relative Harm and Detention</title>
+      <link>https://seancc.github.io/posts/relative-harm/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://seancc.github.io/posts/relative-harm/</guid>
+      <description>Relative Harm and Pretrial Detention
+According to the Prison Policy Institute in 2020, more than 470,000 people at any one time are sitting in local jails without a conviction. These people, along with many in federal detention, are in what is known as pretrial detention: they are sitting in jail awaiting the outcome of a court case. Many of these people will eventually accept plea deals - not necessarily because they are guilty, but because a guilty plea is the quickest way out.</description>
+    </item>
+    
+  </channel>
+</rss>

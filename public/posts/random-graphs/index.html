@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Generating Random Graphs - Charlie Carter</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="Generating Random Graphs">
+<meta itemprop="description" content="Note: This post is still undergoing &lsquo;renovation&rsquo; - images need to be cleaned up and mathematical notation inserted, but the core content is readable and correct.
+Graphs are among the most basic and widely applicable mathematical structures. Modern applications in the study of social networks, spread of communicable diseases, computer networks, and many others, have made the study of graphs and their probabilistic counterpart, random graphs, especially relevant.
+As a way of learning more about networks, I investigated algorithms for generating random graphs."><meta itemprop="datePublished" content="2019-09-02T17:51:49-04:00" />
+<meta itemprop="dateModified" content="2019-09-02T17:51:49-04:00" />
+<meta itemprop="wordCount" content="1858">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Generating Random Graphs" />
+<meta property="og:description" content="Note: This post is still undergoing &lsquo;renovation&rsquo; - images need to be cleaned up and mathematical notation inserted, but the core content is readable and correct.
+Graphs are among the most basic and widely applicable mathematical structures. Modern applications in the study of social networks, spread of communicable diseases, computer networks, and many others, have made the study of graphs and their probabilistic counterpart, random graphs, especially relevant.
+As a way of learning more about networks, I investigated algorithms for generating random graphs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://seancc.github.io/posts/random-graphs/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-09-02T17:51:49-04:00" />
+<meta property="article:modified_time" content="2019-09-02T17:51:49-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Generating Random Graphs"/>
+<meta name="twitter:description" content="Note: This post is still undergoing &lsquo;renovation&rsquo; - images need to be cleaned up and mathematical notation inserted, but the core content is readable and correct.
+Graphs are among the most basic and widely applicable mathematical structures. Modern applications in the study of social networks, spread of communicable diseases, computer networks, and many others, have made the study of graphs and their probabilistic counterpart, random graphs, especially relevant.
+As a way of learning more about networks, I investigated algorithms for generating random graphs."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://seancc.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://seancc.github.io/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://seancc.github.io/css/dark.css" />
+
+	<script src="https://seancc.github.io/js/feather.min.js"></script>
+	
+		<script src="https://seancc.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://seancc.github.io/">
+				<img src="https://i.imgur.com/eheqmQ8.jpg" alt="Charlie Carter" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://seancc.github.io/">Charlie Carter</a></h1>
+	<div class="site-description"><p>Portfolio &amp; Blog</p><nav class="nav social">
+			<ul class="flat"><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">02</span>
+							<span class="rest">Sep 2019</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Generating Random Graphs</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p><em>Note: This post is still undergoing &lsquo;renovation&rsquo; - images need to be cleaned up and mathematical notation inserted, but the core content is readable and correct.</em></p>
+<p>Graphs are among the most basic and widely applicable mathematical structures. Modern applications in the study of social networks, spread of communicable diseases, computer networks, and many others, have made the study of graphs and their probabilistic counterpart, random graphs, especially relevant.</p>
+<p>As a way of learning more about networks, I investigated algorithms for generating random graphs. Below, I have provided a basic introduction to the theory of random graphs, followed by implementations of a few random graph generating algorithms.</p>
+<p>Mathematical notation is neglected here presently (due to a combination of learning how to format it in Hugo, and saving time).</p>
+<p><strong>Introduction to Random Graphs</strong></p>
+<p>A graph is defined as a pair of sets: one set of vertices, and another set of edges connecting those vertices. In undirected graphs, each edge can be represented as an unordered pair of vertices - whereas, in directed graphs, each edge must be an ordered pair.</p>
+<p>A <em>walk</em> on a graph is a sequence of vertices and edges where each vertex in the sequence shares an edge with the next and the previous vertex. A <em>path</em> is a walk where no edges are repeated. Paths and walks can be <em>open</em> or <em>closed</em>: open if the starting vertex is different from the ending vertex, and closed otherwise.</p>
+<p><em>Simple</em> graphs are those which contain no self-loops and have at most on edge between each pair of vertices. A graph is <em>connected</em> if there exists a path from every vertex in the graph to every other vertex in the graph.</p>
+<p>A <em>random graph</em> is defined as above, except that either the set of edges, the set of nodes, or both are generated probabilistically. There are many different models for generating random graphs, some of which will be discussed shortly.</p>
+<p><strong>Implementation of Graph Class</strong></p>
+<p>Before we can generate graphs, we need a graph class. This will make a few parts of the process easier - allowing us to abstract away some code that we don&rsquo;t want to repeat.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Graph</span>: 
+	vertices <span style="color:#f92672">=</span> []
+	edges <span style="color:#f92672">=</span> []
+	<span style="color:#66d9ef">def</span> __init__(self, v, e):
+		self<span style="color:#f92672">.</span>vertices <span style="color:#f92672">=</span> v 
+		self<span style="color:#f92672">.</span>edges <span style="color:#f92672">=</span> e 
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getAdjacentEdges</span>(self, vertex):
+		aedges <span style="color:#f92672">=</span> [e <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>edges <span style="color:#66d9ef">if</span> vertex <span style="color:#f92672">in</span> e]
+		<span style="color:#66d9ef">return</span>(aedges)
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getAdjacentVertices</span>(self, vertex):
+		aedges <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>getAdjacentEdges(vertex) 
+		averts <span style="color:#f92672">=</span> set()
+		<span style="color:#66d9ef">for</span> edge <span style="color:#f92672">in</span> aedges:
+			<span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> edge:
+				<span style="color:#66d9ef">if</span> v <span style="color:#f92672">!=</span> vertex:
+					averts<span style="color:#f92672">.</span>add(v)
+		<span style="color:#66d9ef">return</span>(list(averts))
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">DFS</span>(graph, vertex):
+		stack <span style="color:#f92672">=</span> []
+		visited <span style="color:#f92672">=</span> set()
+		stack<span style="color:#f92672">.</span>append(vertex)
+		<span style="color:#66d9ef">while</span> stack:
+			vert <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop()
+			<span style="color:#66d9ef">if</span> vert <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> visited:
+				visited<span style="color:#f92672">.</span>add(vert)
+				<span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> graph<span style="color:#f92672">.</span>getAdjacentVertices(vert):
+					stack<span style="color:#f92672">.</span>append(v)
+		<span style="color:#66d9ef">return</span>(list(visited))</code></pre></td></tr></table>
+</div>
+</div>
+<p>Probably the only non-obvious part of the above class definition is the DFS method. This is a straightforward implementation of a Depth-First Search. Given a graph and a vertex, it explores every potential path away from that vertex to generate a list of all possible vertices that can be visited starting from that vertex. This will be useful later.</p>
+<p><strong>Random Graph Models, Part 1</strong></p>
+<p>The most simple and most famous model for generating and describing random graphs is the <em>Erdos-Renyi model</em>. The Erdos-Renyi (ER) model encapsulates at least two separate models which are, in the limit, equivalent.</p>
+<p>The two models that the ER model may refer to are:</p>
+<ol>
+<li>
+<p><em>G(n, p)</em>: In this model, there exists a fixed number of nodes <em>n</em> and a fixed probability <em>p</em> of any two nodes being connected by a single, undirected edge. Random graphs in this model are generated by starting from a fixed set of vertices and connecting each pair with probability <em>p</em>. We call this the <em>constructive model</em>.</p>
+</li>
+<li>
+<p><em>G(n, m)</em>: In this model, the number of nodes <em>n</em> and the number of edges <em>m</em> are both fixed, and the edges are randomly distributed among node parts. This model can be thought of as representing an ensemble of graphs obtained by sampling uniformly from all graphs with <em>n</em> vertices and <em>m</em> edges - giving it the name the <em>sampling model</em>.</p>
+</li>
+</ol>
+<p>For large <em>n</em>, these two models are equivalent. The intuition is simple: given <em>G(n, p)</em>, we can construct a random variable <em>m</em> distributed as <em>Bin(n(n-1)/2, p)</em>, yielding <em>G(n, m)</em>.</p>
+<p>Erdos and Renyi showed a number of interesting properties of graphs under this model, some of which we will examine later.</p>
+<p><strong>Implementing the Erdos-Renyi model</strong></p>
+<p>We first implement the constructive model for Erdos-Renyi random graphs. This model starts with <em>n</em> labeled vertices and a fixed probability <em>p</em> and subsequently generates edges. This part is relatively straightforward: given a list of vertices and a probability, we simply generate all possible combinations of size two, then we keep each edge with probability p.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generateER_Graph</span>(vertices, prob):
+	possibleEdges <span style="color:#f92672">=</span> list(itertools<span style="color:#f92672">.</span>combinations(vertices, <span style="color:#ae81ff">2</span>))
+	edge_check <span style="color:#f92672">=</span> scipy<span style="color:#f92672">.</span>stats<span style="color:#f92672">.</span>bernoulli(prob)<span style="color:#f92672">.</span>rvs(len(possibleEdges))
+	realEdges <span style="color:#f92672">=</span> [possibleEdges[i] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,len(edge_check)) <span style="color:#66d9ef">if</span> edge_check[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+	er_graph <span style="color:#f92672">=</span> Graph(vertices, realEdges)
+	<span style="color:#66d9ef">return</span>(er_graph)</code></pre></td></tr></table>
+</div>
+</div>
+<p>Using this model, we generated a few graphs and display their vertex degree distributions as histograms below. MatPlotLib and NetworkX were used to display the graphs and generate the histograms below.</p>
+<p><img src="/posts/images/ERG010.png" alt="Erdos-Renyi Graph with p = 0.10"></p>
+<p><em>Erdos-Renyi Graphs generated with 20 vertices and p = 0.10. Note that if a vertex has no edges coming from it, it does not appear.</em></p>
+<p><img src="/posts/images/ERGH010.png" alt="Erdos-Renyi Graph 0.1 vertex degree distribution histogram"></p>
+<p><em>Histograms showing the vertex degree distributions corresponding to the graph in the same cell in the graph table.</em></p>
+<p><img src="/posts/images/ERG025.png" alt="Erdos-Renyi Graph with p = 0.25"></p>
+<p><em>Erdos-Renyi Graphs generated with 20 vertices and p = 0.25. Note that if a vertex has no edges coming from it, it does not appear.</em></p>
+<p><img src="/posts/images/ERGH025.png" alt="Erdos-Renyi Graph 0.25 vertex degree distribution histogram"></p>
+<p><em>Histograms showing the vertex degree distributions corresponding to the graph in the same cell in the graph table.</em></p>
+<p>This model allows us to demonstrate a result proven by Erdos and Renyi in their 1960 paper <em>&ldquo;On The Evolution of Random Graphs&rdquo;</em>. Erdos and Renyi showed that a critical transition occurs in random graphs as the number of edges approaches half the number of vertices in the graph. At this transition point, we see the emergence of a &ldquo;giant component&rdquo; - a connected component of the graph that outsizes all other components.</p>
+<p>At this critical transition, the expected degree <em>t</em> of any one vertex in the graph passes from <em>t &lt; 1</em> to <em>t &gt; 1</em>. Prior to this threshold, ER model graphs tend to be composed of many small components. Once this threshold is crossed, one giant component dominates the graph. This is reflective of the large degree of clustering that tends to be seen in real life networks.</p>
+<p>Below, an ER graph was generated using 200 vertices and a probability of 0.025 for any one potential edge to exist. The giant component in this graph should be fairly obvious:</p>
+<p><img src="/posts/images/ErgLarge.png" alt="Large Erdos-Renyi graph with p = 0.025"></p>
+<p><strong>Random Graph Models, Part 2</strong></p>
+<p>While its simplicity makes it possible to show a number of interesting results, it also limits the ER model&rsquo;s applicability to real world networks. This is a result of the probability distribution defining its features: real world networks are rarely describable by treating every potential edge as independently having the same probability of existing.</p>
+<p>We need a new model that allows graphs to be generated using arbitrary vertex probability distributions, and this exists in the form of the <em>configuration model</em>. The configuration model gives a simple algorithm for generating random graphs with a fixed number of nodes <em>n</em> , each of which has a number of edges connecting to it determined by an arbitrary probability distribution <em>F</em>. The algorithm follows:</p>
+<pre tabindex="0"><code class="language-linenos=table" data-lang="linenos=table">1. Begin with n vertices and discrete pdf F
+2. For each vertex, generate a single random value m from F
+3. At each vertex, generate m &#34;stubs&#34;
+4. Select two stubs at random and connect the two stubs to form an edge
+5. Repeat the above step until all stubs are connected. 
+6. If there are an odd number of stubs, simply remove the last remaining stub. </code></pre>
+<p>This algorithm will often lead to graphs containing self-loops and multi-edges. If this happens and we don&rsquo;t want graphs containing these, we simply throw out the graph, generate a new one, and repeat until we get a graph with no self-loops and multi-edges. We can also impose additional requirements, such as connectedness.</p>
+<p>The downside of this model is that you can sometimes generate many graphs before arriving at a graph that meets your conditions. Unfortunately, simply removing multi-edges or self-loops when they occur or adding edges to connect an unconnected graph will cause the graph&rsquo;s vertex distribution to no longer accurately reflect the chosen distribution.</p>
+<p><strong>Implementing the Configuration Model</strong></p>
+<p>The configuration model is implemented below. Here is where the depth-first search implemented in the original graph class is useful - using it, we can ensure that we only keep graphs that are connected. We also impose the additional requirements of no self-loops and no multi-edges. We use SciPy for its discrete probability distributions.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generateCM_Graph</span>(degDist, vertices):
+	<span style="color:#75715e"># Function to generate test graphs that may or may not contain loops or multi-edges</span>
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">genTestGraph</span>(degDist, vertices):
+		numVert <span style="color:#f92672">=</span> len(vertices)
+		degrees <span style="color:#f92672">=</span> list(degDist<span style="color:#f92672">.</span>rvs(numVert))
+		edges <span style="color:#f92672">=</span> list()
+		dsum <span style="color:#f92672">=</span> sum(degrees)
+		<span style="color:#66d9ef">while</span>(dsum <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>):
+			v1 <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, numVert<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+			v2 <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, numVert<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+			<span style="color:#66d9ef">if</span>(degrees[v1] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> degrees[v2] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>):
+				edges<span style="color:#f92672">.</span>append([vertices[v1], vertices[v2]])
+				degrees[v1] <span style="color:#f92672">=</span> degrees[v1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+				degrees[v2] <span style="color:#f92672">=</span> degrees[v2] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+				dsum <span style="color:#f92672">=</span> dsum <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
+		<span style="color:#66d9ef">return</span>(Graph(vertices, edges))
+		
+	<span style="color:#75715e"># Uses above function to generate graphs, test them, and regenerate if needed</span>
+	goodGraph <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+	graph <span style="color:#f92672">=</span> genTestGraph(degDist, vertices)
+	<span style="color:#66d9ef">while</span>(goodGraph <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>):
+		goodGraph <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+		<span style="color:#75715e"># Checks that there are no self edges or multi-edges</span>
+		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> graph<span style="color:#f92672">.</span>edges:
+			count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+			<span style="color:#66d9ef">if</span>(len(i) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>):
+				goodGraph <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+				graph <span style="color:#f92672">=</span> genTestGraph(degDist, vertices)
+				<span style="color:#66d9ef">break</span> 
+			<span style="color:#66d9ef">for</span> j  <span style="color:#f92672">in</span> graph<span style="color:#f92672">.</span>edges: 
+				<span style="color:#66d9ef">if</span> i[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">in</span> j <span style="color:#f92672">and</span> i[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">in</span> j:
+					count <span style="color:#f92672">=</span> count <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+			<span style="color:#66d9ef">if</span>(count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>):
+				goodGraph <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+				graph <span style="color:#f92672">=</span> genTestGraph(degDist, vertices)
+		<span style="color:#75715e"># Checks that all vertices are reachable </span>
+		<span style="color:#66d9ef">if</span>(goodGraph <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span>(collections<span style="color:#f92672">.</span>Counter(Graph<span style="color:#f92672">.</span>DFS(graph, graph<span style="color:#f92672">.</span>vertices[<span style="color:#ae81ff">0</span>])) <span style="color:#f92672">==</span> collections<span style="color:#f92672">.</span>Counter(graph<span style="color:#f92672">.</span>vertices)):
+				goodGraph <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+				graph <span style="color:#f92672">=</span> genTestGraph(degDist, vertices)
+	<span style="color:#66d9ef">return</span>(graph)</code></pre></td></tr></table>
+</div>
+</div>
+<p>A few notes on this implementation. Note that there&rsquo;s a nested function for generating graphs within the generateCM_Graph(.,.) function. This nested function does the heavy lifting of generating new graphs, while the rest of the function checks if this graph meets the conditions that we laid out for our configuration model. If the graph does not meet these conditions, yet another new graph is generated.</p>
+<p>Graphs and associated vertex degree distributions can be found below.</p>
+<p><img src="/posts/images/CMExp1.png" alt="Configuration Model graph generated with an exp(1) vertex distribution on 20 vertices"></p>
+<p><em>Here we generated graphs using an exponential distribution for the vertex distribution with a scaling parameter of 1. 20 vertices were used.</em></p>
+<p><img src="/posts/images/CMHExp1.png" alt="Vertex distribution histogram for the exp(1) graphs"></p>
+<p><em>The vertex degree distribution histogram shows what we&rsquo;d expect: most of the vertices have 1 or 2 degrees, reflecting the long &ldquo;chains&rdquo; seen in the above graphs.</em></p>
+<p><img src="/posts/images/CMUni15.png" alt="Configuration Model graph generated with a Uniform(1, 5) vertex distribution on 20 vertices"></p>
+<p><em>Here we generated graphs using a Uniform(1,5) distribution for the vertex distribution. 20 vertices were used. Note how much more interconnected the resulting graphs are than the exponential distribution graphs.</em></p>
+<p><img src="/posts/images/CMHUni15.png" alt="Vertex distribution histogram for the Uni(1,5) graphs"></p>
+<p><em>The vertex degree distribution histogram for the above graphs.</em></p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>A Quick D&amp;D Experiment - Charlie Carter</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="A Quick D&amp;D Experiment">
+<meta itemprop="description" content="Just a quick experiment I was curious about! A few friends and I are starting up a new D&amp;D campaign, and a player asked me how I prefer stats for characters to be determined. I&rsquo;ve always preferred point buying, but I enjoy the randomness of rolling stats. I ran some simulations to get an idea of what kind of stat distributions different rolling methods give!
+First, we define our functions for generating stats."><meta itemprop="datePublished" content="2019-09-02T17:51:49-04:00" />
+<meta itemprop="dateModified" content="2019-09-02T17:51:49-04:00" />
+<meta itemprop="wordCount" content="1184">
+<meta itemprop="keywords" content="projects,quickie,D&amp;D,simulation," /><meta property="og:title" content="A Quick D&amp;D Experiment" />
+<meta property="og:description" content="Just a quick experiment I was curious about! A few friends and I are starting up a new D&amp;D campaign, and a player asked me how I prefer stats for characters to be determined. I&rsquo;ve always preferred point buying, but I enjoy the randomness of rolling stats. I ran some simulations to get an idea of what kind of stat distributions different rolling methods give!
+First, we define our functions for generating stats." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://seancc.github.io/posts/dnd-experiment/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-09-02T17:51:49-04:00" />
+<meta property="article:modified_time" content="2019-09-02T17:51:49-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Quick D&amp;D Experiment"/>
+<meta name="twitter:description" content="Just a quick experiment I was curious about! A few friends and I are starting up a new D&amp;D campaign, and a player asked me how I prefer stats for characters to be determined. I&rsquo;ve always preferred point buying, but I enjoy the randomness of rolling stats. I ran some simulations to get an idea of what kind of stat distributions different rolling methods give!
+First, we define our functions for generating stats."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://seancc.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://seancc.github.io/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://seancc.github.io/css/dark.css" />
+
+	<script src="https://seancc.github.io/js/feather.min.js"></script>
+	
+		<script src="https://seancc.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://seancc.github.io/">
+				<img src="https://i.imgur.com/eheqmQ8.jpg" alt="Charlie Carter" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://seancc.github.io/">Charlie Carter</a></h1>
+	<div class="site-description"><p>Portfolio &amp; Blog</p><nav class="nav social">
+			<ul class="flat"><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">02</span>
+							<span class="rest">Sep 2019</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">A Quick D&amp;D Experiment</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>Just a quick experiment I was curious about! A few friends and I are starting up a new D&amp;D campaign, and a player asked me how I prefer stats for characters to be determined. I&rsquo;ve always preferred point buying, but I enjoy the randomness of rolling stats. I ran some simulations to get an idea of what kind of stat distributions different rolling methods give!</p>
+<p>First, we define our functions for generating stats. The first function simply rolls X number of dice and keeps either the 3 biggest or 3 smallest, based on a user-specified option. We can use this to generate a set of six stats by calling the function 6 times - which is what the generate_stat_set() function does.</p>
+<p>The next function is a bit more interesting: we roll 3 sets of 3d6 (which we can use our previous function for), then we use the 3 numbers generated to generate 3 more numbers that are &ldquo;inverse&rdquo; to what we got. What we set as the upper bounds for generating the inverse set will determine how powerful of characters are generated.</p>
+<p>We also test a stat-set-generating function that performs a &ldquo;best of &hellip;&rdquo; roll - it generates two or more stat sets and keeps the &ldquo;best&rdquo; one. How we pick the &ldquo;best&rdquo; set matters a lot. In this case, we simply keep the set with the highest sum.</p>
+<p>More methods will be added as I think of them!</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">generate_stat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, MaxOrMin<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>){
+	dice_face <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>)
+	draws <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sample</span>(dice_face, numToRoll, replace<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>)
+	keep <span style="color:#f92672">&lt;-</span> draws<span style="color:#a6e22e">[order</span>(draws, decreasing<span style="color:#f92672">=</span>MaxOrMin)[1<span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>]]
+	stat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sum</span>(keep)
+	<span style="color:#a6e22e">return</span>(stat)
+}
+
+generate_stat_set <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, MaxOrMin<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>){
+	stat_set <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">6</span>, <span style="color:#a6e22e">generate_stat</span>(numToRoll, MaxOrMin))
+	<span style="color:#a6e22e">return</span>(stat_set)
+}
+
+generate_inv_stat_set <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(ub <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">20</span>)){
+	rolls <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">3</span>,<span style="color:#a6e22e">generate_stat</span>(numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>))
+	rolls <span style="color:#f92672">&lt;-</span> rolls<span style="color:#a6e22e">[order</span>(rolls, decreasing<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>)[1<span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>]]
+	inv1 <span style="color:#f92672">&lt;-</span> ub[1] <span style="color:#f92672">-</span> rolls[1]
+	inv2 <span style="color:#f92672">&lt;-</span> ub[2] <span style="color:#f92672">-</span> rolls[2]
+	inv3 <span style="color:#f92672">&lt;-</span> ub[3] <span style="color:#f92672">-</span> rolls[3]
+	<span style="color:#a6e22e">return</span>(<span style="color:#a6e22e">c</span>(rolls[1], rolls[2], rolls[3], inv1, inv2, inv3))
+}
+
+generate_best_of_set <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(bo <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>){
+	sets <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(bo, <span style="color:#a6e22e">generate_stat_set</span>(numToRoll, <span style="color:#66d9ef">TRUE</span>))
+	sums <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lapply</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>bo, <span style="color:#a6e22e">function</span>(x) <span style="color:#a6e22e">sum</span>(sets[,x]))
+	keep <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">order</span>(<span style="color:#a6e22e">unlist</span>(sums), decreasing<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>)[1]
+	keepset <span style="color:#f92672">&lt;-</span> sets[,keep]  
+	<span style="color:#a6e22e">return</span>(keepset)
+}</code></pre></td></tr></table>
+</div>
+</div>
+<p>Next, we test our functions. We will do this by simply running the functions many times over and generating dataframes from the results. We&rsquo;re going to examine the distribution of the sum and the median of the stat sets for a start.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e"># 3 rolls, pick max </span>
+<span style="color:#f92672">&gt;</span> stat_sets_3rm <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_stat_set</span>(<span style="color:#ae81ff">3</span>, <span style="color:#66d9ef">TRUE</span>))
+<span style="color:#f92672">&gt;</span> stat_sets_3rm <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_sets_3rm))
+<span style="color:#75715e"># 4 rolls, pick max</span>
+<span style="color:#f92672">&gt;</span> stat_sets_4rm <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_stat_set</span>(<span style="color:#ae81ff">4</span>, <span style="color:#66d9ef">TRUE</span>))
+<span style="color:#f92672">&gt;</span> stat_sets_4rm <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_sets_4rm))
+<span style="color:#75715e"># 4 rolls, pick min</span>
+<span style="color:#f92672">&gt;</span> stat_set_4rmi <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_stat_set</span>(numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, <span style="color:#66d9ef">FALSE</span>))
+<span style="color:#f92672">&gt;</span> stat_set_4rmi <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_set_4rmi))
+<span style="color:#75715e"># Inverse stat set, upper-bounds (24, 22, 20)</span>
+<span style="color:#f92672">&gt;</span> stat_sets_inv <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_inv_stat_set</span>(ub<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">20</span>)))
+<span style="color:#f92672">&gt;</span> stat_sets_inv <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_sets_inv))
+<span style="color:#75715e"># Inverse stat set, upper-bounds (22, 20, 18)</span>
+<span style="color:#f92672">&gt;</span> stat_sets_inv2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_inv_stat_set</span>(ub<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">18</span>)))
+<span style="color:#f92672">&gt;</span> stat_sets_inv2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_sets_inv2))
+<span style="color:#75715e"># Best of 2, roll 3 for generating</span>
+<span style="color:#f92672">&gt;</span> stat_sets_bo2n3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_best_of_set</span>(bo<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>))
+<span style="color:#f92672">&gt;</span> stat_sets_bo2n3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_sets_bo2n3))
+<span style="color:#75715e"># Best of 2, roll 4 for generating </span>
+<span style="color:#f92672">&gt;</span> stat_sets_bo2n4 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_best_of_set</span>(bo<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>))
+<span style="color:#f92672">&gt;</span> stat_sets_bo2n4 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_sets_bo2n4))
+<span style="color:#75715e"># Best of 3, roll 3 for generating </span>
+<span style="color:#f92672">&gt;</span> stat_sets_bo3n3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_best_of_set</span>(bo<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>))
+<span style="color:#f92672">&gt;</span> stat_sets_bo3n3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_sets_bo3n3))
+<span style="color:#75715e"># Best of 3, roll 4 for generating </span>
+<span style="color:#f92672">&gt;</span> stat_sets_bo3n4 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">replicate</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">generate_best_of_set</span>(bo<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, numToRoll<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>))
+<span style="color:#f92672">&gt;</span> stat_sets_bo3n4 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#a6e22e">t</span>(stat_sets_bo3n4))</code></pre></td></tr></table>
+</div>
+</div>
+<p>And now we compute sums and medians and plot the distributions:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> stat_sets_3rm<span style="color:#f92672">$</span>sum <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rowSums</span>(stat_sets_3rm)
+<span style="color:#f92672">&gt;</span> stat_sets_3rm<span style="color:#f92672">$</span>median <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">apply</span>(stat_sets_3rm, <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">function</span>(x) <span style="color:#a6e22e">median</span>(x[1<span style="color:#f92672">:</span><span style="color:#ae81ff">6</span>]))
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">ggplot</span>(stat_sets_3rm, <span style="color:#a6e22e">aes</span>(x<span style="color:#f92672">=</span>median)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_histogram</span>(breaks<span style="color:#f92672">=</span><span style="color:#a6e22e">seq</span>(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">17</span>, by<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>), col<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;black&#34;</span>, fill<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;darkslateblue&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">ggtitle</span>(<span style="color:#e6db74">&#34;Distribution of Medians of Stat Sets&#34;</span>)
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">ggplot</span>(stat_sets_3rm, <span style="color:#a6e22e">aes</span>(x<span style="color:#f92672">=</span>sum)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_histogram</span>(col<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;black&#34;</span>, fill<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;darkslateblue&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">ggtitle</span>(<span style="color:#e6db74">&#34;Distribution of Sums of Stat Sets&#34;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+<p>The above was repeated for each of the generated stat sets, resulting in the following distribution plots:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roll 3, keep max</td>
+<td><img src="/posts/images/3rm_median.png" alt=""></td>
+<td><img src="/posts/images/3rm_sum.png" alt=""></td>
+</tr>
+<tr>
+<td>Roll 4, keep max</td>
+<td><img src="/posts/images/4rm_median.png" alt=""></td>
+<td><img src="/posts/images/4rm_sum.png" alt=""></td>
+</tr>
+<tr>
+<td>Roll 4, keep min</td>
+<td><img src="/posts/images/4rmi_median.png" alt=""></td>
+<td><img src="/posts/images/4rmi_sum.png" alt=""></td>
+</tr>
+<tr>
+<td>Best of 2, Roll 3</td>
+<td><img src="/posts/images/bo2n3_median.png" alt=""></td>
+<td><img src="/posts/images/bo2n3_sum.png" alt=""></td>
+</tr>
+<tr>
+<td>Best of 2, Roll 4</td>
+<td><img src="/posts/images/bo2n4_median.png" alt=""></td>
+<td><img src="/posts/images/bo2n4_sum.png" alt=""></td>
+</tr>
+<tr>
+<td>Best of 3, Roll 3</td>
+<td><img src="/posts/images/bo3n3_median.png" alt=""></td>
+<td><img src="/posts/images/bo3n3_sum.png" alt=""></td>
+</tr>
+<tr>
+<td>Best of 3, Roll 4</td>
+<td><img src="/posts/images/bo3n4_median.png" alt=""></td>
+<td><img src="/posts/images/bo3n4_sum.png" alt=""></td>
+</tr>
+<tr>
+<td>Inverse, Upper Bound (24, 22, 20)</td>
+<td><img src="/posts/images/inv1_median.png" alt=""></td>
+<td><img src="/posts/images/inv1_sum.png" alt=""></td>
+</tr>
+<tr>
+<td>Inverse, Upper Bound (22, 20, 18)</td>
+<td><img src="/posts/images/inv2_median.png" alt=""></td>
+<td><img src="/posts/images/inv2_sum.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>The conclusions from this aren&rsquo;t all that surprising. The more rolls you use, the higher your median and sum are going to be, on average. What is neat, though, is how we can control the variance in stat sets by using different methods. This isn&rsquo;t all that surprising either, but it is talked about less often when it comes to D&amp;D stats.</p>
+<p>The more opportunities you give your players to improve their stats when rolling, the better their stats are going to be, obviously. If you let your players roll 4 and drop 1 for each stat, they&rsquo;re going to have better stats than if you let them roll 3. This is a choice you make as a DM: how powerful do I want my players to be? This differs from group to group and campaign to campaign.</p>
+<p>What doesn&rsquo;t vary is that we generally don&rsquo;t want parties with massive discrepancies in power. When you have that in groups, it tends to breed a mixture of tension, nuisance, and boredom: the players with weak characters will alternately be bored and annoyed as their most powerful party member walks through challenges like they&rsquo;re nothing as the rest of the party watches.</p>
+<p>We can control this by using &ldquo;best of&rdquo; rolls. Note that the median and sums for the best of rolls don&rsquo;t seem to change that much from their non-best-of counterparts. The median and sum are more determined by how many dice you roll (and subsequently drop) than by whether you generate one or two sets. If you want a powerful but balanced party, have your players do a best-of-2 rolling 4 dice. If you want an average but balanced party, do the same but only roll 3 dice. And if you want a weak but balanced party, have your players do a best-of-2 rolling 4 dice and keeping the <em>minimum</em> instead of the maximum.</p>
+<p>At the far extreme of controlling variance is the &ldquo;inverse&rdquo; method. If you&rsquo;re not a huge fan of randomness, you can use the inverse method to give your players the feeling of having rolled their dice without giving them the actual result of having done so. The inverse method controls the sum and median of your rolls. The DM need only set the upper bounds to determine exactly how strong they want their party to be.</p>
+<p>Just to numerically demonstrate the point:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e"># Variance in medians </span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_3rm<span style="color:#f92672">$</span>median)
+[1] <span style="color:#ae81ff">2.016391</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_4rm<span style="color:#f92672">$</span>median)
+[1] <span style="color:#ae81ff">1.868446</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_bo2n3<span style="color:#f92672">$</span>median)
+[1] <span style="color:#ae81ff">1.633033</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_bo2n4<span style="color:#f92672">$</span>median)
+[1] <span style="color:#ae81ff">1.348084</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_bo3n3<span style="color:#f92672">$</span>median)
+[1] <span style="color:#ae81ff">1.326064</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_bo3n4<span style="color:#f92672">$</span>median)
+[1] <span style="color:#ae81ff">1.265325</span>
+
+<span style="color:#75715e"># Variance in sums </span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_3rm<span style="color:#f92672">$</span>sum)
+[1] <span style="color:#ae81ff">52.32621</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_4rm<span style="color:#f92672">$</span>sum)
+[1] <span style="color:#ae81ff">49.41758</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_bo2n3<span style="color:#f92672">$</span>sum)
+[1] <span style="color:#ae81ff">34.28188</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_bo2n4<span style="color:#f92672">$</span>sum)
+[1] <span style="color:#ae81ff">31.23015</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_bo3n3<span style="color:#f92672">$</span>sum)
+[1] <span style="color:#ae81ff">30.49885</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">var</span>(stat_sets_bo3n4<span style="color:#f92672">$</span>sum)
+[1] <span style="color:#ae81ff">27.36714</span></code></pre></td></tr></table>
+</div>
+</div>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/projects">projects</a></li>
+							
+							<li><a href="/tags/quickie">quickie</a></li>
+							
+							<li><a href="/tags/dd">D&amp;D</a></li>
+							
+							<li><a href="/tags/simulation">simulation</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+</body>
+</html>

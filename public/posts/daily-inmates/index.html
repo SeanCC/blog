@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Visualizing NYC Department of Corrections Daily Inmate Records - Charlie Carter</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="Visualizing NYC Department of Corrections Daily Inmate Records">
+<meta itemprop="description" content="In March of 2012, then Mayor of New York City Michael Bloomberg signed into law an amendment to city code mandating that all “public data” be made available on a single public portal: [NYC Open Data]https://opendata.cityofnewyork.us/). A neat summary of the history behind the law and legislation like it can be found in this 2017 article for govtech.com.
+Since then, public data out of NYC has been used in a slew of neat projects."><meta itemprop="datePublished" content="2019-09-08T17:51:49-04:00" />
+<meta itemprop="dateModified" content="2019-09-08T17:51:49-04:00" />
+<meta itemprop="wordCount" content="2147">
+<meta itemprop="keywords" content="visualization,open data,crime data," /><meta property="og:title" content="Visualizing NYC Department of Corrections Daily Inmate Records" />
+<meta property="og:description" content="In March of 2012, then Mayor of New York City Michael Bloomberg signed into law an amendment to city code mandating that all “public data” be made available on a single public portal: [NYC Open Data]https://opendata.cityofnewyork.us/). A neat summary of the history behind the law and legislation like it can be found in this 2017 article for govtech.com.
+Since then, public data out of NYC has been used in a slew of neat projects." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://seancc.github.io/posts/daily-inmates/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-09-08T17:51:49-04:00" />
+<meta property="article:modified_time" content="2019-09-08T17:51:49-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Visualizing NYC Department of Corrections Daily Inmate Records"/>
+<meta name="twitter:description" content="In March of 2012, then Mayor of New York City Michael Bloomberg signed into law an amendment to city code mandating that all “public data” be made available on a single public portal: [NYC Open Data]https://opendata.cityofnewyork.us/). A neat summary of the history behind the law and legislation like it can be found in this 2017 article for govtech.com.
+Since then, public data out of NYC has been used in a slew of neat projects."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://seancc.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://seancc.github.io/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://seancc.github.io/css/dark.css" />
+
+	<script src="https://seancc.github.io/js/feather.min.js"></script>
+	
+		<script src="https://seancc.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://seancc.github.io/">
+				<img src="https://i.imgur.com/eheqmQ8.jpg" alt="Charlie Carter" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://seancc.github.io/">Charlie Carter</a></h1>
+	<div class="site-description"><p>Portfolio &amp; Blog</p><nav class="nav social">
+			<ul class="flat"><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">08</span>
+							<span class="rest">Sep 2019</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Visualizing NYC Department of Corrections Daily Inmate Records</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>In March of 2012, then Mayor of New York City Michael Bloomberg signed into law an amendment to city code mandating that all “public data” be made available on a single public portal: [NYC Open Data]https://opendata.cityofnewyork.us/). A neat summary of the history behind the law and legislation like it can be found <a href="https://www.govtech.com/data/New-York-City-Open-Data-A-Brief-History.html">in this 2017 article for govtech.com.</a></p>
+<p>Since then, public data out of NYC has been used in a slew of <a href="https://opendata.cityofnewyork.us/projects/">neat projects</a>. Similar portals exist for <a href="https://data.cityofchicago.org/">Chicago</a>, <a href="https://data.seattle.gov/">Seattle</a>, <a href="https://opendata.dc.gov/">Washington DC</a>, <a href="https://catalog.data.gov/dataset?organization_type=City+Government#topic=cities_navigation">and many others</a>.</p>
+<p>I had never heard of the open city data movement until a coworker at <a href="https://seancc.github.io/2019/09/crime-lab-new-york-intership-post-mortem/">CLNY</a> mentioned work she was doing with NYC’s open data portal. I decided to give it a go myself!</p>
+<p>The NYC Department of Corrections updates a database of basic information about their <a href="https://data.cityofnewyork.us/Public-Safety/Daily-Inmates-In-Custody/7479-ugqb">inmate population</a> every day. To try out the NYC Open Data platform, I’m going to retrieve the updated data, generate some descriptive statistics, and create a few visualizations. The <a href="https://www.vera.org/">Vera Institute of Justice</a> has a dashboard that does something similar <a href="https://vera-institute.shinyapps.io/nyc_jail_population/">here</a>. I don’t expect to get the same quality of results in what is essentially a weekend project, but I might learn a thing or two along the way!</p>
+<p>The goals of this project are to automatically retrieve data from NYC’s Open Data platform and generate visualizations representing the demographic makeup of inmates in detention. I am, for now, not focused on any predictive tasks or on statistical testing - I primarily want to familiarize myself enough with the Socrata platform to use it in future projects. For this writeup, I intend to outline both what I did and what is presented in the resulting visualizations.</p>
+<p>All data for this project can be found on <a href="https://github.com/SeanCC/NYC_DOC_Visualizations">my github page</a>.</p>
+<h1 id="loading-the-data">Loading the data</h1>
+<p>Simply retrieving the data proved perhaps the most annoying part of the project. The NYC Open Data platform uses Socrata and with it, the <a href="https://www.odata.org/">OData protocol</a>. This makes it easy to pull the data into Tableau or Excel, but the most common OData libraries in Python <em>pyodata</em> and <em>python-odata</em> both seemed to have trouble querying the service. Thankfully, someone built a wrapper for python’s <em>requests</em> library called <em>sodapy</em> that’s designed specifically for querying the Socrata Open Data API. This is what I ended up using to make my life easier - it can be installed via pip or conda if you want to check it out yourself.</p>
+<p>The Daily Inmates records are updated every day. Unfortunately, it appears that no backlog of data for previous dates is made available via NYC Open Data. In addition to downloading the inmates file, I’ll also get the date of the file and update a running log of dates when the inmates file was downloaded. This will let me keep track of historical data as well as the current data.</p>
+<p>From <em>load_datasets.py</em></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(data_config,
+    date_log,
+    output_directory):
+    inmates_client <span style="color:#f92672">=</span> sodapy<span style="color:#f92672">.</span>Socrata(data_config[<span style="color:#e6db74">&#39;service_url&#39;</span>], data_config[<span style="color:#e6db74">&#39;apptoken&#39;</span>], username<span style="color:#f92672">=</span>data_config[<span style="color:#e6db74">&#39;username&#39;</span>], password<span style="color:#f92672">=</span>data_config[<span style="color:#e6db74">&#39;password&#39;</span>])
+    metadata <span style="color:#f92672">=</span> inmates_client<span style="color:#f92672">.</span>get_metadata(data_config[<span style="color:#e6db74">&#39;endpoint&#39;</span>])
+    count <span style="color:#f92672">=</span> inmates_client<span style="color:#f92672">.</span>get(data_config[<span style="color:#e6db74">&#39;endpoint&#39;</span>], query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;select COUNT(*)&#34;</span>)
+    date <span style="color:#f92672">=</span> metadata[<span style="color:#e6db74">&#34;rowsUpdatedAt&#34;</span>]
+    data <span style="color:#f92672">=</span> inmates_client<span style="color:#f92672">.</span>get(data_config[<span style="color:#e6db74">&#39;endpoint&#39;</span>], content_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;json&#39;</span>, limit<span style="color:#f92672">=</span>count[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;COUNT&#39;</span>])
+
+    inmates_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>io<span style="color:#f92672">.</span>json<span style="color:#f92672">.</span>json_normalize(data)
+    inmates_df<span style="color:#f92672">.</span>to_feather(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>output_directory<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#e6db74">_inmates.feather&#39;</span>)
+    <span style="color:#66d9ef">with</span> open(date_log, <span style="color:#e6db74">&#39;a&#39;</span>) <span style="color:#66d9ef">as</span> log:
+        log<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+    <span style="color:#66d9ef">return</span>()</code></pre></td></tr></table>
+</div>
+</div>
+<p>Socrata by default limits requests to a maximum of 1000 rows. It also throttles requests if you do not have an apptoken. The data_config that’s passed here contains the service URL, app token, username, and password (and is not in my repository - if you’re replicating the project, you’ll have to create your own .yml config file with these parameters).</p>
+<h1 id="transforming-the-data">Transforming the data</h1>
+<p>Most of the information we want to visualize is aggregate data. Generating this from the raw inmates dataframe repeatedly will be time consuming and inefficient at minimum. Instead, it’ll be easier to pre-emptively aggregate, then use further groupbys to get the information we need.</p>
+<p>The groups that we care about for our visualizations are <em>race</em>, <em>gender</em>, <em>custody level</em> and <em>gang affiliation</em>. There are very few people classified with races of ‘I’ (Native American) or ‘U’ (Unknown), so I’ll collapse these into the ‘O’ (Other) category. In addition, I’ll want a “length_incarcerated” feature for visualizations later, so I generate that here.</p>
+<p>From <em>generate_features.py</em></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(inmates_dir,
+         date_file,
+        demo_output,
+        inmates_output):
+    <span style="color:#75715e"># Get last date and load inmates file for that date</span>
+
+    date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">with</span> open(date_file, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> log:
+        dates <span style="color:#f92672">=</span> log<span style="color:#f92672">.</span>readlines()
+        last_date <span style="color:#f92672">=</span> dates[len(dates)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>rstrip()
+    inmates <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_feather(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>inmates_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>last_date<span style="color:#e6db74">}</span><span style="color:#e6db74">_inmates.feather&#39;</span>)
+
+    <span style="color:#75715e"># Generate length incarcerated feature, save feather</span>
+
+    last_date_dt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(datetime<span style="color:#f92672">.</span>utcfromtimestamp(int(last_date))<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">-%Y&#39;</span>))
+    inmates[<span style="color:#e6db74">&#39;admitted_dt&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(inmates[<span style="color:#e6db74">&#39;admitted_dt&#39;</span>])
+    inmates[<span style="color:#e6db74">&#39;length_incarcerated&#39;</span>] <span style="color:#f92672">=</span> (last_date_dt <span style="color:#f92672">-</span> inmates[<span style="color:#e6db74">&#39;admitted_dt&#39;</span>])<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>days
+    inmates<span style="color:#f92672">.</span>to_feather(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>inmates_output<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>last_date<span style="color:#e6db74">}</span><span style="color:#e6db74">_inmates.feather&#39;</span>)
+    
+    <span style="color:#75715e"># Convert I and U to O in race column</span>
+
+    inmates<span style="color:#f92672">.</span>loc[inmates[<span style="color:#e6db74">&#39;race&#39;</span>]<span style="color:#f92672">.</span>isin([<span style="color:#e6db74">&#39;I&#39;</span>, <span style="color:#e6db74">&#39;U&#39;</span>]), <span style="color:#e6db74">&#39;race&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;O&#39;</span>
+
+    <span style="color:#75715e"># Groupby columns we care about, convert to df</span>
+
+    demo_data <span style="color:#f92672">=</span> inmates<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;race&#39;</span>, <span style="color:#e6db74">&#39;gender&#39;</span>, <span style="color:#e6db74">&#39;custody_level&#39;</span>, <span style="color:#e6db74">&#39;srg_flg&#39;</span>])<span style="color:#f92672">.</span>count()[[<span style="color:#e6db74">&#39;inmateid&#39;</span>]]
+    demo_df <span style="color:#f92672">=</span> demo_data<span style="color:#f92672">.</span>reset_index()
+    demo_df<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;inmateid&#39;</span>: <span style="color:#e6db74">&#39;count&#39;</span>}, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+
+    <span style="color:#75715e"># Generate avg_length and sum_days features, then save df to file</span>
+
+    demo_df[[<span style="color:#e6db74">&#39;count&#39;</span>]] <span style="color:#f92672">=</span> demo_df[[<span style="color:#e6db74">&#39;count&#39;</span>]]<span style="color:#f92672">.</span>fillna(value<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+    demo_df[[<span style="color:#e6db74">&#39;avg_length&#39;</span>]] <span style="color:#f92672">=</span> inmates<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;race&#39;</span>,<span style="color:#e6db74">&#39;gender&#39;</span>,<span style="color:#e6db74">&#39;custody_level&#39;</span>, <span style="color:#e6db74">&#39;srg_flg&#39;</span>])<span style="color:#f92672">.</span>mean()[[<span style="color:#e6db74">&#39;length_incarcerated&#39;</span>]]<span style="color:#f92672">.</span>reset_index()[[<span style="color:#e6db74">&#39;length_incarcerated&#39;</span>]]
+    demo_df[[<span style="color:#e6db74">&#39;avg_length&#39;</span>]] <span style="color:#f92672">=</span> demo_df[[<span style="color:#e6db74">&#39;avg_length&#39;</span>]]<span style="color:#f92672">.</span>fillna(value<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+    demo_df[<span style="color:#e6db74">&#39;sum_days&#39;</span>] <span style="color:#f92672">=</span> demo_df[<span style="color:#e6db74">&#39;avg_length&#39;</span>]<span style="color:#f92672">*</span>demo_df[<span style="color:#e6db74">&#39;count&#39;</span>]
+    demo_df<span style="color:#f92672">.</span>to_feather(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>demo_output<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>last_date<span style="color:#e6db74">}</span><span style="color:#e6db74">_demographics.feather&#39;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="visualizations">Visualizations</h1>
+<p>Now the good stuff!</p>
+<p>Note - we’re turning off the error bars in most of these charts because we’re representing the actual composition (on this date), not an estimate of averages.</p>
+<p>The first, most obvious, thing to visualize is simply the demographic distribution of inmates. I did this in two ways: first, by inmate count, and second by sum of inmate hours incarcerated. I attempted to use Seaborn to create the stacked bar charts here, but Seaborn does not support stacking natively. Later I’ll resort to matplotlib for stacking with multiple categories.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">incarc_race_chart</span>(demographics, date, output_directory):
+    incarc_df <span style="color:#f92672">=</span> demographics<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;race&#39;</span>, <span style="color:#e6db74">&#39;gender&#39;</span>])<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>reset_index()<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#34;count&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+    fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">8</span>))
+    sns<span style="color:#f92672">.</span>set_color_codes(<span style="color:#e6db74">&#34;deep&#34;</span>)
+    sns<span style="color:#f92672">.</span>barplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;count&#34;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;race&#34;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;r&#34;</span>, data<span style="color:#f92672">=</span>incarc_df, ci<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, )
+    top_bar <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>Rectangle((<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>), <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, fc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;r&#34;</span>)
+    sns<span style="color:#f92672">.</span>set_color_codes(<span style="color:#e6db74">&#34;muted&#34;</span>)
+    sns<span style="color:#f92672">.</span>barplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;count&#34;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;race&#34;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;b&#34;</span>, data<span style="color:#f92672">=</span>incarc_df[incarc_df[<span style="color:#e6db74">&#39;gender&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;F&#39;</span>], ci<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span> )
+    bottom_bar <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>Rectangle((<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>), <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, fc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;b&#34;</span>)
+    plt<span style="color:#f92672">.</span>legend([top_bar, bottom_bar], [<span style="color:#e6db74">&#39;Male&#39;</span>, <span style="color:#e6db74">&#39;Female&#39;</span>], loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;best&#39;</span>, ncol<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, prop<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;size&#39;</span>:<span style="color:#ae81ff">16</span>})
+
+    fig<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>output_directory<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#e6db74">_incarc_race_chart.png&#39;</span>)
+
+    incarc_df<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#34;sum_days&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">8</span>))
+    sns<span style="color:#f92672">.</span>set_color_codes(<span style="color:#e6db74">&#34;deep&#34;</span>)
+    sns<span style="color:#f92672">.</span>barplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sum_days&#34;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;race&#34;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;r&#34;</span>, data<span style="color:#f92672">=</span>incarc_df, ci<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+    top_bar <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>Rectangle((<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>), <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, fc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;r&#34;</span>)
+    sns<span style="color:#f92672">.</span>set_color_codes(<span style="color:#e6db74">&#34;muted&#34;</span>)
+    sns<span style="color:#f92672">.</span>barplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sum_days&#34;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;race&#34;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;b&#34;</span>, data<span style="color:#f92672">=</span>incarc_df[incarc_df[<span style="color:#e6db74">&#39;gender&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;F&#39;</span>], ci<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+    bottom_bar <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>Rectangle((<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>), <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, fc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;b&#34;</span>)
+    plt<span style="color:#f92672">.</span>legend([top_bar, bottom_bar], [<span style="color:#e6db74">&#39;Male&#39;</span>, <span style="color:#e6db74">&#39;Female&#39;</span>], loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;best&#39;</span>, ncol<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, prop<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;size&#39;</span>:<span style="color:#ae81ff">16</span>})
+    fig<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>output_directory<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#e6db74">_incarc_race_chart_time.png&#39;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+<p>And the resulting charts:</p>
+<p><img src="/posts/images/NYC_DOC/1567970544_incarc_race_chart.png" alt="Incarcerated Race Charts"></p>
+<p><img src="/posts/images/NYC_DOC/1567970544_incarc_race_chart_time.png" alt="Incarcerated Race Time Sum Distribution"></p>
+<p>I felt that the second chart might add a little bit to the information from the first chart. By raw count, the prison demographics are predominantly non-white, and this is clear from the first chart. I was curious whether the discrepancy would grow further when taking length of time incarcerated into account. There didn’t appear to be much difference in this case, but I decided to examine the distribution of incarceration times anways:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">incarcerated_dists</span>(inmates, date, output_directory):
+    fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">8</span>))
+    ax<span style="color:#f92672">.</span>set_xlim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2000</span>)
+    <span style="color:#66d9ef">for</span> race <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#39;W&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#e6db74">&#39;O&#39;</span>, <span style="color:#e6db74">&#39;A&#39;</span>]:
+        rsub <span style="color:#f92672">=</span> inmates[inmates[<span style="color:#e6db74">&#39;race&#39;</span>] <span style="color:#f92672">==</span> race]
+        sns<span style="color:#f92672">.</span>distplot(rsub[<span style="color:#e6db74">&#39;length_incarcerated&#39;</span>], hist<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, kde<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, label <span style="color:#f92672">=</span> race )
+    fig<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>output_directory<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#e6db74">_length_incarcerated_dists.png&#39;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+<p><img src="/posts/images/NYC_DOC/1567970544_length_incarcerated_dists.png" alt="Incarcerated Race Time Distribution"></p>
+<p>As might by expected, the distribution of incarceration lengths has a long right tail: there are relatively fewer people incarcerated for long periods of time. <a href="https://www.criminaljustice.ny.gov/crimnet/ojsa/jail_pop_y.pdf">According to this report</a>, the majority of inmates in NYC’s correctional system are unsentenced. Presumably, these inmates will exit incarceration relatively earlier than sentenced inmates. The dataset excludes sealed cases, and in NYC cases are sealed if the case results in a ‘favorable outcome’ for the defendant - but it’s unclear whether that means that the dataset excludes pretrial detainees. The chart cuts off here at 2000 days to make the data more clear, but there are inmates who have been imprisoned for longer, just very few.</p>
+<p>While across all demographics it’s apparent that most inmates spend relatively little time incarcerated, there does appear to be some variation by demographics. Interestingly, both black and white inmates have a much greater proportion of their probability mass under 100 days than Asian American and “other” inmates.</p>
+<p>I next wanted to visualize the distribution of custody levels in the population. The dataset classifies inmates into three custody levels: ‘MIN’, ‘MED’, and ‘MAX’. Unfortunately, NYC Open Data does not appear to provide any guide to what these custody levels mean. The NYC DOC operates <a href="https://www1.nyc.gov/site/doc/about/facilities.page">11 detention facilities</a> (notably, the DOC also operates two hospital prison wards, and NYC is home to <a href="https://citylimits.org/2018/07/17/the-jail-next-door-a-look-at-the-14-correctional-facilities-in-new-yorks-neighborhoods/">several detention facilities not run by the NYC DOC</a>) which are classified as “minimum-security”, “medium-security”, and “maximum-security”. Presumably, custody level refers to the security level of the prison the inmate is housed in.</p>
+<p>The Seaborn maintainers are not a big fan of stacked bar charts - but I am! So here I used pandas’ pivot feature and matplotlib’s ‘barh’ plot with a little bit of personalization:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">incarc_level</span>(demographics, date, output_directory):
+    incarc_level_df <span style="color:#f92672">=</span> demographics<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;custody_level&#39;</span>, <span style="color:#e6db74">&#39;race&#39;</span>])<span style="color:#f92672">.</span>sum()[<span style="color:#e6db74">&#39;count&#39;</span>]<span style="color:#f92672">.</span>reset_index()
+
+    <span style="color:#75715e"># Pivot by custody level - race</span>
+
+    pivot<span style="color:#f92672">=</span>incarc_level_df<span style="color:#f92672">.</span>pivot(index<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;custody_level&#39;</span>, columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;race&#39;</span>, values<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;count&#39;</span>)
+    pivot <span style="color:#f92672">=</span> pivot<span style="color:#f92672">.</span>reindex()
+    plot <span style="color:#f92672">=</span> pivot<span style="color:#f92672">.</span>plot(kind <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;barh&#39;</span>, stacked<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>, colormap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;viridis&#39;</span>)
+    plot<span style="color:#f92672">.</span>set_facecolor(<span style="color:#e6db74">&#39;whitesmoke&#39;</span>)
+    plot<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;-&#39;</span>, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+    fig <span style="color:#f92672">=</span> plot<span style="color:#f92672">.</span>get_figure()
+    fig<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>output_directory<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#e6db74">_stacked_bar_custody_race_pivot.png&#39;</span>)
+
+    <span style="color:#75715e"># Pivot by race - custody level</span>
+
+    pivot<span style="color:#f92672">=</span>incarc_level_df<span style="color:#f92672">.</span>pivot(index<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;race&#39;</span>, columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;custody_level&#39;</span>, values<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;count&#39;</span>)
+    plot <span style="color:#f92672">=</span> pivot<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;barh&#39;</span>, stacked<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>, colormap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cividis&#39;</span>)
+    plot<span style="color:#f92672">.</span>set_facecolor(<span style="color:#e6db74">&#39;whitesmoke&#39;</span>)
+    plot<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;-&#39;</span>, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+    fig<span style="color:#f92672">=</span>plot<span style="color:#f92672">.</span>get_figure()
+    fig<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>output_directory<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#e6db74">_stacked_bar_race_custody_pivot.png&#39;</span>)
+
+    <span style="color:#75715e"># Pivot by gang affiliation - custody level</span>
+
+    incarc_level_df <span style="color:#f92672">=</span> demographics<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;custody_level&#39;</span>, <span style="color:#e6db74">&#39;srg_flg&#39;</span>])<span style="color:#f92672">.</span>sum()[<span style="color:#e6db74">&#39;count&#39;</span>]<span style="color:#f92672">.</span>reset_index()
+    pivot <span style="color:#f92672">=</span> incarc_level_df<span style="color:#f92672">.</span>pivot(index<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;srg_flg&#39;</span>, columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;custody_level&#39;</span>, values<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;count&#39;</span>)
+    plot<span style="color:#f92672">=</span>pivot<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;barh&#39;</span>, stacked<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>, colormap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;viridis&#39;</span>)
+    plot<span style="color:#f92672">.</span>set_facecolor(<span style="color:#e6db74">&#39;whitesmoke&#39;</span>)
+    plot<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;-&#39;</span>, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+    fig <span style="color:#f92672">=</span> plot<span style="color:#f92672">.</span>get_figure()
+    fig<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>output_directory<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#e6db74">_stacked_bar_gang_custody_pivot.png&#39;</span>)
+
+    <span style="color:#75715e"># Pivot by gang affiliation - race</span>
+
+    incarc_level_df <span style="color:#f92672">=</span> demographics<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;race&#39;</span>, <span style="color:#e6db74">&#39;srg_flg&#39;</span>])<span style="color:#f92672">.</span>sum()[<span style="color:#e6db74">&#39;count&#39;</span>]<span style="color:#f92672">.</span>reset_index()
+    pivot <span style="color:#f92672">=</span> incarc_level_df<span style="color:#f92672">.</span>pivot(index<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;race&#39;</span>, columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;srg_flg&#39;</span>, values<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;count&#39;</span>)
+    plot<span style="color:#f92672">=</span>pivot<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;barh&#39;</span>, stacked<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>, colormap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cividis&#39;</span>)
+    plot<span style="color:#f92672">.</span>set_facecolor(<span style="color:#e6db74">&#39;whitesmoke&#39;</span>)
+    plot<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;-&#39;</span>, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+    fig <span style="color:#f92672">=</span> plot<span style="color:#f92672">.</span>get_figure()
+    fig<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>output_directory<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>date<span style="color:#e6db74">}</span><span style="color:#e6db74">_stacked_bar_gang_race_pivot.png&#39;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+<p>I pivoted first by custody level, yielding the following chart:</p>
+<p><img src="/posts/images/NYC_DOC/1567970544_stacked_bar_custody_race_pivot.png" alt="Race Custody Pivot"></p>
+<p>The first thing that stood out to me is that more prisoners are kept at ‘medium’ custody level than at ‘minimum’ or ‘maximum’ - and, in fact, minimum and maximum custody levels are relatively similar in count, albeit with different compositions. This is not what I expected - I’d be curious to see the distribution across security levels in different cities and states, but was unable to quickly find data for that.</p>
+<p>Maximum security prisons house a much higher proportion of non-white inmates. In general, non-white inmates make up greater proportions at all security levels due to making up a relatively larger proportion of the whole population, but this is most apparent at the maximum security level, especially when we pivot by race.</p>
+<p><img src="/posts/images/NYC_DOC/1567970544_stacked_bar_race_custody_pivot.png" alt="Race Custody Pivot"></p>
+<p>Almost half of white inmates, however, appear to be housed in minimum security detention centers. In fact, white inmates are the only inmates who are more likely to be in minimum security than in medium security, except possibly for Asian Americans. Black inmates appear almost equally likely to be in maximum or medium security, and least likely to be in minimum security prisons. Other inmates appear almost equally likely to be in minimum or maximum security, but more likely in general to be in medium security facilities.</p>
+<p>With relatively few other variables available to me, I decided to examine if this discrepancy could at all be explained by looking at the gang affiliation flag. To that end, I created two additional pivot tables and stacked bar charts: one representing proportion of gang affiliation by race and one representing proportion of custody level by gang affiliation.</p>
+<p><img src="/posts/images/NYC_DOC/1567970544_stacked_bar_gang_race_pivot.png" alt="Race Custody Pivot"></p>
+<p><img src="/posts/images/NYC_DOC/1567970544_stacked_bar_gang_custody_pivot.png" alt="Race Custody Pivot"></p>
+<p>Very few white inmates are booked with a known gang affiliation, and inmates booked with a known gang affiliation are rarely assigned to minimum security. With a little over 2000 inmates in maximum security prisons, gang affiliated inmates account for 800-900 of those inmates. This does not entirely explain the discrepancy in custody level distribution by race, but it does account for some of the effect.</p>
+<h1 id="summary-and-future-work">Summary and future work</h1>
+<p>I specifically wanted to avoid doing statistical tests or building a model using this dataset. The goal of the project was simply to retrieve data and visualize it - more or less to carry out the initial proprocessing and exploratory steps of a data science pipeline. This seemed like a reasonable goal for a weekend project, and I’m happy with where I got.</p>
+<p>Going forward, I’d like to integrate the aggregate data collected here into a larger project utilizing more of NYC’s open datasets. The NYC Open Data platform hosts two arrests datasets that might prove informative: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Arrests-Data-Historic-/8h9b-rp9u">historic arrests</a> and <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Arrest-Data-Year-to-Date-/uip8-fykc">current year arrests</a>. In addition, if I can find another city using the Socrata platform and hosting similar correctional data, it would be interesting to compare the aggregate results from NYC against another city’s department of corrections.</p>
+<p>Vera’s dashboard for examining this data is pretty cool. I wanted to play with bokeh a little bit and see if I could put together any interactive visualizations, but unfortunately didn’t have time this weekend. Given comparable data from other cities, a good future project might be to build an interactive dashboard comparing correctional data across cities.</p>
+<p>Thanks for reading!</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/visualization">visualization</a></li>
+							
+							<li><a href="/tags/open-data">open data</a></li>
+							
+							<li><a href="/tags/crime-data">crime data</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+</body>
+</html>

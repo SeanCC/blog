@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>crime data on Charlie Carter</title>
+    <link>https://seancc.github.io/tags/crime-data/</link>
+    <description>Recent content in crime data on Charlie Carter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Sep 2019 17:51:49 -0400</lastBuildDate><atom:link href="https://seancc.github.io/tags/crime-data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visualizing NYC Department of Corrections Daily Inmate Records</title>
+      <link>https://seancc.github.io/posts/daily-inmates/</link>
+      <pubDate>Sun, 08 Sep 2019 17:51:49 -0400</pubDate>
+      
+      <guid>https://seancc.github.io/posts/daily-inmates/</guid>
+      <description>In March of 2012, then Mayor of New York City Michael Bloomberg signed into law an amendment to city code mandating that all “public data” be made available on a single public portal: [NYC Open Data]https://opendata.cityofnewyork.us/). A neat summary of the history behind the law and legislation like it can be found in this 2017 article for govtech.com.
+Since then, public data out of NYC has been used in a slew of neat projects.</description>
+    </item>
+    
+  </channel>
+</rss>

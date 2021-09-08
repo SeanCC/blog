@@ -1,63 +1,69 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Good Wobbles</title>
-    <link>/</link>
-    <description>Recent content on Good Wobbles</description>
+    <title>Charlie Carter</title>
+    <link>https://seancc.github.io/</link>
+    <description>Recent content on Charlie Carter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Sep 2019 17:51:49 -0400</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Tue, 07 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://seancc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visualizing Relative Harm and Detention</title>
+      <link>https://seancc.github.io/posts/relative-harm/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://seancc.github.io/posts/relative-harm/</guid>
+      <description>Relative Harm and Pretrial Detention
+According to the Prison Policy Institute in 2020, more than 470,000 people at any one time are sitting in local jails without a conviction. These people, along with many in federal detention, are in what is known as pretrial detention: they are sitting in jail awaiting the outcome of a court case. Many of these people will eventually accept plea deals - not necessarily because they are guilty, but because a guilty plea is the quickest way out.</description>
+    </item>
     
     <item>
-      <title>Crime Lab New York Intership: Post-Mortem</title>
-      <link>/2019/09/crime-lab-new-york-intership-post-mortem/</link>
-      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
+      <title>Visualizing NYC Department of Corrections Daily Inmate Records</title>
+      <link>https://seancc.github.io/posts/daily-inmates/</link>
+      <pubDate>Sun, 08 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/2019/09/crime-lab-new-york-intership-post-mortem/</guid>
-      <description>I spent this past summer in New York City, interning for an amazing organization: Crime Lab New York, a member of the University of Chicago&amp;rsquo;s Urban Labs system. I got to spend a lot of time learning about a lot of things that I had, frankly, never even thought to think about!
-Given just how much I&amp;rsquo;ve learned this summer, I thought it might be beneficial to myself (and whomever might come across this blog/portfolio) to do a post-mortem of my time at CLNY.</description>
+      <guid>https://seancc.github.io/posts/daily-inmates/</guid>
+      <description>In March of 2012, then Mayor of New York City Michael Bloomberg signed into law an amendment to city code mandating that all “public data” be made available on a single public portal: [NYC Open Data]https://opendata.cityofnewyork.us/). A neat summary of the history behind the law and legislation like it can be found in this 2017 article for govtech.com.
+Since then, public data out of NYC has been used in a slew of neat projects.</description>
     </item>
     
     <item>
       <title>A Quick D&amp;D Experiment</title>
-      <link>/1/01/a-quick-dd-experiment/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/posts/dnd-experiment/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/1/01/a-quick-dd-experiment/</guid>
+      <guid>https://seancc.github.io/posts/dnd-experiment/</guid>
       <description>Just a quick experiment I was curious about! A few friends and I are starting up a new D&amp;amp;D campaign, and a player asked me how I prefer stats for characters to be determined. I&amp;rsquo;ve always preferred point buying, but I enjoy the randomness of rolling stats. I ran some simulations to get an idea of what kind of stat distributions different rolling methods give!
 First, we define our functions for generating stats.</description>
     </item>
     
     <item>
       <title>An Analysis of the Competitive Lifetime of Powerlifters</title>
-      <link>/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/posts/competitive-lifting/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</guid>
+      <guid>https://seancc.github.io/posts/competitive-lifting/</guid>
       <description>Brief overview
 A survival analysis is conducted on the OpenPowerlifting.org dataset. Individual powerlifters and the length of time that they&amp;rsquo;ve been active (in terms of time from first to last meet and number of meets attended) are treated as survival objects. Survival curves are fitted and covariates are examined for effects.
 This project was completed in part as a semester project for a Reliability Data Analysis course at the University of South Florida.</description>
     </item>
     
     <item>
-      <title>Contact</title>
-      <link>/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Crime Lab New York Intership: Post-Mortem</title>
+      <link>https://seancc.github.io/posts/clny_post_mortem/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/contact/</guid>
-      <description>The easiest way to contact me is by email, which I usually check a couple of times a day at minimum.
-Email: sean.ch.carter@gmail.com</description>
+      <guid>https://seancc.github.io/posts/clny_post_mortem/</guid>
+      <description>I spent this past summer in New York City, interning for an amazing organization: Crime Lab New York, a member of the University of Chicago&amp;rsquo;s Urban Labs system. I got to spend a lot of time learning about a lot of things that I had, frankly, never even thought to think about!
+Given just how much I&amp;rsquo;ve learned this summer, I thought it might be beneficial to myself (and whomever might come across this blog/portfolio) to do a post-mortem of my time at CLNY.</description>
     </item>
     
     <item>
       <title>Generating Random Graphs</title>
-      <link>/1/01/generating-random-graphs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/posts/random-graphs/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/1/01/generating-random-graphs/</guid>
+      <guid>https://seancc.github.io/posts/random-graphs/</guid>
       <description>Note: This post is still undergoing &amp;lsquo;renovation&amp;rsquo; - images need to be cleaned up and mathematical notation inserted, but the core content is readable and correct.
 Graphs are among the most basic and widely applicable mathematical structures. Modern applications in the study of social networks, spread of communicable diseases, computer networks, and many others, have made the study of graphs and their probabilistic counterpart, random graphs, especially relevant.
 As a way of learning more about networks, I investigated algorithms for generating random graphs.</description>
@@ -65,22 +71,32 @@ As a way of learning more about networks, I investigated algorithms for generati
     
     <item>
       <title>Random Walkers and Web Crawlers</title>
-      <link>/1/01/random-walkers-and-web-crawlers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/posts/wiki-crawler/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/1/01/random-walkers-and-web-crawlers/</guid>
+      <guid>https://seancc.github.io/posts/wiki-crawler/</guid>
       <description>Brief Overview: This was put together for a class assignment in Probability Theory 2. We were to discuss random walks and how they relate to the PageRank algorithm.
 An overview of the relevant mathematics is given, and a small web crawler is implemented to collect links between wikipedia articles. The links are saved in a SQLite database and used later to construct a graph and rank articles based on centrality.</description>
     </item>
     
     <item>
-      <title>Whose Wobbles Are Wholesome And Good</title>
-      <link>/about/</link>
+      <title>About Charlie!</title>
+      <link>https://seancc.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
-      <description>Hi! You&amp;rsquo;ve found the blog/portfolio of Sean Carter! I&amp;rsquo;m a graduate student in Statistics at the University of South Florida.
-Over the years, I&amp;rsquo;ve found that many projects that I work on eventually get &amp;ldquo;lost to the void&amp;rdquo;. I wanted to have a place where I could put any interesting work that I do so I can refer back to it later and share it with other people. This is basically the home of all of my projects going forward.</description>
+      <guid>https://seancc.github.io/about/</guid>
+      <description>Hi! My name is Sean Carter (but I usually go by Charlie) and this is my blog! I&amp;rsquo;m a research analyst working in criminal justice reform. I&amp;rsquo;m passionate about many things, but most for researching and implementing evidence based practices to improve our government and our world.
+Over the years, I’ve found that many projects that I work on on my own eventually get “lost to the void”. I wanted to have a place where I could put anything interseting that I do so I can refer back to it later and share it with other people.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://seancc.github.io/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://seancc.github.io/contact/</guid>
+      <description>The easiest way to contact me is by email, which I usually check a couple of times a day at minimum.
+Email: sean.ch.carter@gmail.com</description>
     </item>
     
   </channel>

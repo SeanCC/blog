@@ -1,32 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>random graphs on Good Wobbles</title>
-    <link>/tags/random-graphs/</link>
-    <description>Recent content in random graphs on Good Wobbles</description>
+    <title>random graphs on Charlie Carter</title>
+    <link>https://seancc.github.io/tags/random-graphs/</link>
+    <description>Recent content in random graphs on Charlie Carter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    
-	<atom:link href="/tags/random-graphs/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Generating Random Graphs</title>
-      <link>/1/01/generating-random-graphs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/1/01/generating-random-graphs/</guid>
-      <description>Note: This post is still undergoing &amp;lsquo;renovation&amp;rsquo; - images need to be cleaned up and mathematical notation inserted, but the core content is readable and correct.
-Graphs are among the most basic and widely applicable mathematical structures. Modern applications in the study of social networks, spread of communicable diseases, computer networks, and many others, have made the study of graphs and their probabilistic counterpart, random graphs, especially relevant.
-As a way of learning more about networks, I investigated algorithms for generating random graphs.</description>
-    </item>
-    
+    <lastBuildDate>Mon, 02 Sep 2019 17:51:49 -0400</lastBuildDate><atom:link href="https://seancc.github.io/tags/random-graphs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Random Walkers and Web Crawlers</title>
-      <link>/1/01/random-walkers-and-web-crawlers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/posts/wiki-crawler/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/1/01/random-walkers-and-web-crawlers/</guid>
+      <guid>https://seancc.github.io/posts/wiki-crawler/</guid>
       <description>Brief Overview: This was put together for a class assignment in Probability Theory 2. We were to discuss random walks and how they relate to the PageRank algorithm.
 An overview of the relevant mathematics is given, and a small web crawler is implemented to collect links between wikipedia articles. The links are saved in a SQLite database and used later to construct a graph and rank articles based on centrality.</description>
     </item>

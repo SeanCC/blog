@@ -1,0 +1,70 @@
+<script type = 'text/javascript' src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+<div id='harmDiv'></div>
+<style>
+	#harmdiv {
+		height:800px;
+	}
+</style>
+<script>
+	
+	var NumberOfPeople = 37000;
+	var detPeriod = Array(180).fill().map((element, index) => index + 1);
+	var relHarms = Array(100).fill().map((element, index) => (index + 1)/2);
+	var detHarms = [];
+	var crimeHarms = [];
+	for(var i =0; i< detPeriod.length; i++){
+		var dRow = [];
+		var cRow = [];
+		for(var j = 0; j< relHarms.length; j++){
+			dRow.push(detPeriod[i]*NumberOfPeople);
+			cRow.push(relHarms[j]*NumberOfPeople);
+			}
+		detHarms.push(dRow);
+		crimeHarms.push(cRow);
+	};
+	
+	var layout = {
+	  title: 'Harm of Detention vs Relative Harm of Offense',
+	  height:600,
+	  scene: {
+		xaxis:{title: 'Length of Detention'},
+		yaxis:{title: 'Relative Harm Ratio'},
+		zaxis:{title: 'Total Harm'},
+		camera: {
+          center: {
+                x: 0, y: 0, z: 0 }, 
+          eye: { 
+                x: -2.5, y: -1, z: 2.25 }, 
+           up: {
+                x: 0, y: 0, z: 1 }
+			}
+		},
+	};
+
+	detColors = [
+		['0', 'rgb(135, 135, 135)'],
+		['1.0','rgb(255, 52, 36)']
+	];
+	prevColors = [
+		['0', 'rgb(25, 61, 158)'],
+		['1.0','rgb(125, 45, 120)']
+	];
+	
+	detData = {
+		x:detPeriod,
+		y:relHarms,
+		z:detHarms,
+		colorscale:detColors,
+		type:'surface'
+	};
+	crimeData = {
+		x:detPeriod,
+		y:relHarms,
+		z:crimeHarms,
+		colorscale:prevColors,
+		type:'surface'
+	};
+	var data = [detData, crimeData];
+	
+	Plotly.newPlot('harmDiv', data, layout);
+</script>

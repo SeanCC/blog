@@ -1,21 +1,95 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	
-	<sitemap>
-	   	<loc>de/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>en/sitemap.xml</loc>
-		
-	   	<lastmod>2019-09-02T17:51:49-04:00</lastmod>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>es/sitemap.xml</loc>
-		
-	</sitemap>
-	
-</sitemapindex>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://seancc.github.io/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/harm/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/plotly/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/posts/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/prison/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/projects/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/visualization/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/posts/relative-harm/</loc>
+    <lastmod>2021-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/crime-data/</loc>
+    <lastmod>2019-09-08T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/open-data/</loc>
+    <lastmod>2019-09-08T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/posts/daily-inmates/</loc>
+    <lastmod>2019-09-08T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/posts/dnd-experiment/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/posts/competitive-lifting/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/posts/clny_post_mortem/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/dd/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/experience/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/posts/random-graphs/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/internship/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/post-mortem/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/quickie/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/random-graphs/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/posts/wiki-crawler/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/random-walks/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/simulation/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/sports/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/survival-analysis/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/tags/web-crawling/</loc>
+    <lastmod>2019-09-02T17:51:49-04:00</lastmod>
+  </url><url>
+    <loc>https://seancc.github.io/about/</loc>
+  </url><url>
+    <loc>https://seancc.github.io/categories/</loc>
+  </url><url>
+    <loc>https://seancc.github.io/contact/</loc>
+  </url>
+</urlset>

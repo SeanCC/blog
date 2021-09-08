@@ -1,97 +1,40 @@
+baseURL = 'https://seancc.github.io/'
+languageCode = 'en-us'
+title = 'Charlie Carter'
+theme = 'hugo-ink'
 
-title = "Good Wobbles"
-languageCode = "en-us"
-defaultContentLanguage = "en"
+[params]
+	subtitle = "Portfolio & Blog"
 
-# Pagination
-paginate = 3
-paginatePath = "page"
+	# Optional 64x64 avatar image.
+	avatar = "https://i.imgur.com/eheqmQ8.jpg"
 
-# Theme to use
-theme = "hugo-bootstrap"
+	# Content types to disable Disqus on.
+	disableDisqusTypes = ["page"]
+	
+	featherIconsCDN = true
+
+	mode = "auto" # "dark" or "auto"
+	# customCSS = "css/custom.css"  # Custom CSS applied to default styles.
+	# customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
+	# customJS = ["js/custom.js", "js/custom1.js"]  # Custom JS scripts
 
 [taxonomies]
   tag = "tags"
   category = "categories"
 
-# Google analytics
-googleAnalytics = "UA-47268287-3"
+# Nav.
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
 
-[languages.en]
-  languageName = "English"
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
 
-  # Replace the default footer message with a localized message
-  # copyright = "Hugo template made with ❤ by Xzya"
-
-  [[languages.en.menu.main]]
-    url = "/"
-    name = "Home"
-    weight = 1
-  [[languages.en.menu.main]]
-    url = "/about/"
-    name = "About"
-    weight = 2
-  [[languages.en.menu.main]]
-    url = "/contact/"
-    name = "Contact"
-    weight = 3
-
-[languages.es]
-  languageName = "Español"
-
-  [[languages.es.menu.main]]
-    url = "/es/"
-    name = "Casa"
-    weight = 1
-  [[languages.es.menu.main]]
-    url = "/about/"
-    name = "Acerca de"
-    weight = 2
-  [[languages.es.menu.main]]
-    url = "/contact/"
-    name = "Contacto"
-    weight = 3
-
-[languages.de]
-  languageName = "Deutsch"
-
-  [[languages.de.menu.main]]
-    url = "/de/"
-    name = "Start"
-    weight = 1
-  [[languages.de.menu.main]]
-    url = "/about/"
-    name = "Über uns"
-    weight = 2
-  [[languages.de.menu.main]]
-    url = "/contact/"
-    name = "Kontakt"
-    weight = 3
-
-# Links format
-
-[permalinks]
-  post = "/:year/:month/:title/"
-
-[params]
-  # Main sections (currently used for the recent posts in the sidebar)
-  mainSections = ["post"]
-
-  # Default author
-  author = "Sean Carter"
-
-  # Date format (default: Jan 2, 2006)
-  # date_format = "Jan 2, 2006"
-
-  # Display post summaries instead of content in list templates (default: true)
-  # truncate = false
-
-  [params.sidebar]
-    # Whether to show the recent posts or not (default: true)
-    # showRecent = false
-
-    # Whether to show the taxonomies or not (default: true)
-    # showTaxonomy = false
-
-    # How many posts to show on the sidebar (Default: 5)
-    # num_recent_posts = 5
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3

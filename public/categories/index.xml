@@ -1,23 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Good Wobbles</title>
-    <link>/categories/</link>
-    <description>Recent content in Categories on Good Wobbles</description>
+    <title>Categories on Charlie Carter</title>
+    <link>https://seancc.github.io/categories/</link>
+    <description>Recent content in Categories on Charlie Carter</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Projects</title>
-      <link>/categories/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/projects/</guid>
-      <description></description>
-    </item>
-    
+    <language>en-us</language><atom:link href="https://seancc.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

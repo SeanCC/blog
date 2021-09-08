@@ -1,0 +1,106 @@
+<script type = 'text/javascript' src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+<div id='harmBars'></div>
+<div id='probSliders'>
+	Probability of Recidivating
+	<input type="range" min = "0" max = "100" value ="50" class = "slider" id = "probRecidSlide">
+	<div id='recidProb'>
+		0.5
+	</div>
+	Length of Detention
+	<input type="range" min = "1" max = "180" value ="60" class = "slider" id = "detLengthSlide">
+	<div id = 'detLength'>
+		60 days
+	</div>
+	
+</div>
+
+<style>
+	#probSliders {
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	#probRecidSlide {
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	#detLengthSlide {
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+</style>
+<script>
+	var detLength = 10;
+	var recidProb = 0.5;
+	
+	// examples  of using a slider to swap out data: 
+	// https://plotly.com/javascript/gapminder-example/
+	// https://stackoverflow.com/questions/59034205/updating-plotly-js-y-axis-with-dynamic-input
+	// https://stackoverflow.com/questions/35946484/high-performance-way-to-update-graph-with-new-data-in-plotly
+	// https://stackoverflow.com/questions/32116368/plotly-update-data
+	// ['Assault', 'Robbery', 'Burglary']
+	pcounts = [63000, 37000, 36000]
+	
+	perc10 = [1, 1/24, 1/24]
+	perc25 = [5, 1/4, 5/24]
+	perc50 = [30, 3, 1]
+	perc75 = [6*30, 14, 7]
+	perc90 = [3.5*365, 30, 60]
+	
+	function detHarms(detTime, personCounts){
+		return [
+			detTime*personCounts[0],
+			detTime*personCounts[1],
+			detTime*personCounts[2]
+		];
+	};
+	function prevHarms(recidProb, relHarms, personCounts){
+		return [
+			recidProb*personCounts[0]*relHarms[0],
+			recidProb*personCounts[1]*relHarms[1],
+			recidProb*personCounts[2]*relHarms[2]
+		];
+	};
+	
+	
+	detTrace = {
+		x: ['Assault', 'Robbery', 'Burglary'],
+		y: detHarms(detLength, pcounts),
+		type:'bar',
+		name:'Harm Caused'
+	}
+	
+	prevTrace = {
+		x: ['Assault', 'Robbery', 'Burglary'],
+		y: prevHarms(recidProb, perc50, pcounts),
+		type:'bar',
+		name:'Harm Prevented'
+	}
+	
+	data = [detTrace, prevTrace]
+
+	
+	var layout = {barmode:'group'}
+	Plotly.newPlot('harmBars', data, layout);
+	
+	var recidOut = document.getElementById('recidProb');
+	var probSlider = document.getElementById('probRecidSlide');
+	probSlider.oninput = function(){
+		newProb = this.value/100;
+		recidOut.innerHTML = newProb;
+		data[1]['y'] = prevHarms(newProb, perc50, pcounts);
+		Plotly.redraw('harmBars');
+	}
+	
+	var detOut = document.getElementById('detLength');
+	var detSlider = document.getElementById('detLengthSlide');
+	detSlider.oninput = function(){
+		newDet = this.value;
+		detOut.innerHTML = newDet + " days";
+		data[0]['y'] = detHarms(newDet, pcounts);
+		Plotly.redraw('harmBars');
+	}
+	
+</script>

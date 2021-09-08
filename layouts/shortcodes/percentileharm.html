@@ -1,0 +1,86 @@
+<script type = 'text/javascript' src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+<div id='percHarm'></div>
+<div id='percSliders'>
+	Length of Detention
+	<input type="range" min = "1" max = "180" value ="60" class = "slider" id = "detLengthSlide2">
+	<div id = 'detLength2'>
+		60 days
+	</div>
+	
+</div>
+
+<style>
+	#percSliders {
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	#detLengthSlide2 {
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+</style>
+<script>
+
+	assaultPerc = [1,5,30,6*30, 3.5*365]
+	robberyPerc = [1/24, 1/4, 3, 14, 30]
+	burglaryPerc = [1/24, 5/24, 1, 7, 60]
+	
+	var dLength = 30;
+	var recProb = 0.5
+	
+	
+	function harmRatios(percentiles, detLength, recidProb){
+		ratios = [];
+		for(var i = 0; i< 5; i++){
+			ratios.push(
+				detLength/(recidProb*percentiles[i])
+			);
+		};
+		return ratios;
+	}
+	
+	assaultTrace = {
+		x: [10, 25, 50, 75, 90],
+		y: harmRatios(assaultPerc, dLength, recProb),
+		type:'line',
+		name:'Detention-Assault Harm Ratio'
+	}
+	
+	robberyTrace = {
+		x: [10, 25, 50, 75, 90],
+		y: harmRatios(robberyPerc, dLength, recProb),
+		type:'line',
+		name:'Detention-Robbery Harm Ratio'
+	}
+	
+	burglaryTrace = {
+		x: [10, 25, 50, 75, 90],
+		y: harmRatios(burglaryPerc, dLength, recProb),
+		type:'line',
+		name:'Detention-Burglary Harm Ratio'
+	}
+	
+	data = [assaultTrace, robberyTrace, burglaryTrace]
+	var layout = {
+		yaxis: {
+			type: 'log',
+			autorange: true
+		}
+	}
+	Plotly.newPlot('percHarm', data, layout);
+	
+	var detOut2 = document.getElementById('detLength2');
+	var detSlider2 = document.getElementById('detLengthSlide2');
+	detSlider2.oninput = function(){
+		var newDet = this.value;
+		detOut2.innerHTML = newDet + " days";
+		data[0]['y'] = harmRatios(assaultPerc, newDet, recProb);
+		data[1]['y'] = harmRatios(robberyPerc, newDet, recProb);
+		data[2]['y'] = harmRatios(burglaryPerc, newDet, recProb);
+		Plotly.redraw('percHarm');
+	}
+	
+	
+</script>

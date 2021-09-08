@@ -1,0 +1,46 @@
+<script type = 'text/javascript' src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+<div id='netHarmDiv'></div>
+<script>
+	
+	var NumberOfPeople = 37000;
+	var detPeriod = Array(180).fill().map((element, index) => index + 1);
+	var relHarms = Array(100).fill().map((element, index) => (index + 1)/2);
+
+	var netHarms = [];
+	for(var i =0; i< detPeriod.length; i++){
+
+		var nRow = [];
+		for(var j = 0; j< relHarms.length; j++){
+			nRow.push(relHarms[j]*NumberOfPeople - (detPeriod[i]*NumberOfPeople))
+			}
+		netHarms.push(nRow)
+	};
+	
+	var layout = {
+	  title: 'Net Harm (Detention - Relative Harm Caused)',
+	  height:600,
+	  scene: {
+		xaxis:{title: 'Length of Detention'},
+		yaxis:{title: 'Relative Harm Ratio'},
+		zaxis:{title: 'Net Harm'},
+		camera: {
+          center: {
+                x: 0, y: 0, z: 0 }, 
+          eye: { 
+                x: -2.5, y: -1, z: 2.25 }, 
+           up: {
+                x: 0, y: 0, z: 1 }
+			}
+		},
+	};
+
+	netData = {
+		x:detPeriod,
+		y:relHarms,
+		z:netHarms,
+		type:'surface'
+	};
+	var data = [netData];
+	
+	Plotly.newPlot('netHarmDiv', data, layout);
+</script>

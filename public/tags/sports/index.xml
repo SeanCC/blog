@@ -1,21 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>sports on Good Wobbles</title>
-    <link>/tags/sports/</link>
-    <description>Recent content in sports on Good Wobbles</description>
+    <title>sports on Charlie Carter</title>
+    <link>https://seancc.github.io/tags/sports/</link>
+    <description>Recent content in sports on Charlie Carter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    
-	<atom:link href="/tags/sports/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 02 Sep 2019 17:51:49 -0400</lastBuildDate><atom:link href="https://seancc.github.io/tags/sports/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>An Analysis of the Competitive Lifetime of Powerlifters</title>
-      <link>/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/posts/competitive-lifting/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/1/01/an-analysis-of-the-competitive-lifetime-of-powerlifters/</guid>
+      <guid>https://seancc.github.io/posts/competitive-lifting/</guid>
       <description>Brief overview
 A survival analysis is conducted on the OpenPowerlifting.org dataset. Individual powerlifters and the length of time that they&amp;rsquo;ve been active (in terms of time from first to last meet and number of meets attended) are treated as survival objects. Survival curves are fitted and covariates are examined for effects.
 This project was completed in part as a semester project for a Reliability Data Analysis course at the University of South Florida.</description>

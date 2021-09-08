@@ -1,21 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>simulation on Good Wobbles</title>
-    <link>/tags/simulation/</link>
-    <description>Recent content in simulation on Good Wobbles</description>
+    <title>simulation on Charlie Carter</title>
+    <link>https://seancc.github.io/tags/simulation/</link>
+    <description>Recent content in simulation on Charlie Carter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    
-	<atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 02 Sep 2019 17:51:49 -0400</lastBuildDate><atom:link href="https://seancc.github.io/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Quick D&amp;D Experiment</title>
-      <link>/1/01/a-quick-dd-experiment/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://seancc.github.io/posts/dnd-experiment/</link>
+      <pubDate>Mon, 02 Sep 2019 17:51:49 -0400</pubDate>
       
-      <guid>/1/01/a-quick-dd-experiment/</guid>
+      <guid>https://seancc.github.io/posts/dnd-experiment/</guid>
       <description>Just a quick experiment I was curious about! A few friends and I are starting up a new D&amp;amp;D campaign, and a player asked me how I prefer stats for characters to be determined. I&amp;rsquo;ve always preferred point buying, but I enjoy the randomness of rolling stats. I ran some simulations to get an idea of what kind of stat distributions different rolling methods give!
 First, we define our functions for generating stats.</description>
     </item>
